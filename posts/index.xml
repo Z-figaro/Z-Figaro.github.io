@@ -7,8 +7,1493 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>All rights by figaro zp.</copyright>
-		<lastBuildDate>Tue, 18 Dec 2018 17:14:28 +0800</lastBuildDate>
+		<lastBuildDate>Wed, 19 Dec 2018 15:40:38 +0800</lastBuildDate>
 		<atom:link href="https://z-figaro.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Python基础</title>
+			<link>https://z-figaro.github.io/posts/python%E5%9F%BA%E7%A1%80/</link>
+			<pubDate>Wed, 19 Dec 2018 15:40:38 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/python%E5%9F%BA%E7%A1%80/</guid>
+			<description>&lt;p&gt;慢慢积累所有的基础知识，有深入的使用或者了解。会在后面单开章节写。&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<p>慢慢积累所有的基础知识，有深入的使用或者了解。会在后面单开章节写。</p>
+
+<h1 id="import-与-from-import">import 与 from&hellip;import</h1>
+
+<p>在 python 用 import 或者 from&hellip;import 来导入相应的模块。</p>
+
+<p>将整个模块(somemodule)导入，格式为： <strong>import somemodule</strong></p>
+
+<p>从某个模块中导入某个函数,格式为：** from somemodule import somefunction**</p>
+
+<p>从某个模块中导入多个函数,格式为： <strong>from somemodule import firstfunc, secondfunc, thirdfunc</strong></p>
+
+<p>将某个模块中的全部函数导入，格式为： **from somemodule import ***</p>
+
+<h1 id="标准数据类型">标准数据类型</h1>
+
+<p>Python3 中有六个标准的数据类型：</p>
+
+<ol>
+<li>Number（数字）</li>
+<li>String（字符串）</li>
+<li>List（列表）</li>
+<li>Tuple（元组）</li>
+<li>Set（集合）</li>
+<li>Dictionary（字典）</li>
+</ol>
+
+<p>Python3 的六个标准数据类型中：</p>
+
+<p>不可变数据（3 个）：Number（数字）、String（字符串）、Tuple（元组）；
+可变数据（3 个）：List（列表）、Dictionary（字典）、Set（集合）。</p>
+
+<h2 id="number">Number</h2>
+
+<p>Python3 支持 int、float、bool、complex（复数）。</p>
+
+<p>在Python 3里，只有一种整数类型 int，表示为长整型，没有 python2 中的 Long。</p>
+
+<p>像大多数语言一样，数值类型的赋值和计算都是很直观的。</p>
+
+<p>内置的 type() 函数可以用来查询变量所指的对象类型。</p>
+
+<pre><code>  a, b, c, d = 20, 5.5, True, 4+3j
+  print(type(a), type(b), type(c), type(d))
+  &lt;class 'int'&gt; &lt;class 'float'&gt; &lt;class 'bool'&gt; &lt;class 'complex'&gt;
+</code></pre>
+
+<h3 id="计算">计算</h3>
+
+<pre><code>a = 11
+b =  5
+
+c = a + b
+
+# 加减乘除
+print (a + b)
+print (a - b)
+print (a * b)
+print (a / b) 除，得到一个浮点数
+print (a // b) 除，得到一个整数
+print (a % b) 取余数
+print (a ** b) 乘方
+
+16
+6
+55
+2.2
+2
+1
+161051
+</code></pre>
+
+<h2 id="字符串">字符串</h2>
+
+<pre><code>str = 'Runoob'
+ 
+print (str)          # 输出字符串
+print (str[0:-1])    # 输出第一个到倒数第二个的所有字符
+print (str[0])       # 输出字符串第一个字符
+print (str[2:5])     # 输出从第三个开始到第五个的字符
+print (str[2:])      # 输出从第三个开始的后的所有字符
+print (str * 2)      # 输出字符串两次
+print (str + &quot;TEST&quot;) # 连接字符串
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>Runoob
+Runoo
+R
+noo
+noob
+RunoobRunoob
+RunoobTEST
+</code></pre>
+
+<h4 id="注意">注意：</h4>
+
+<p>1、反斜杠可以用来转义，使用r可以让反斜杠不发生转义。
+2、字符串可以用+运算符连接在一起，用*运算符重复。
+3、Python中的字符串有两种索引方式，从左往右以0开始，从右往左以-1开始。
+4、Python中的字符串不能改变。</p>
+
+<h2 id="list-列表">List 列表</h2>
+
+<p>List（列表） 是 Python 中使用最频繁的数据类型，完全就是oc中的可变数组。</p>
+
+<p>列表可以完成大多数集合类的数据结构实现。列表中元素的类型可以不相同，它支持数字，字符串甚至可以包含列表（所谓嵌套）。</p>
+
+<p>列表是写在方括号 [] 之间、用逗号分隔开的元素列表。</p>
+
+<p>和字符串一样，列表同样可以被索引和截取，列表被截取后返回一个包含所需元素的新列表。</p>
+
+<pre><code>list = [ 'abcd', 786 , 2.23, 'runoob', 70.2 ]
+tinylist = [123, 'runoob']
+ 
+print (list)            # 输出完整列表
+print (list[0])         # 输出列表第一个元素
+print (list[1:3])       # 从第二个开始输出到第三个元素
+print (list[2:])        # 输出从第三个元素开始的所有元素
+print (tinylist * 2)    # 输出两次列表
+print (list + tinylist) # 连接列表
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>['abcd', 786, 2.23, 'runoob', 70.2]
+abcd
+[786, 2.23]
+[2.23, 'runoob', 70.2]
+[123, 'runoob', 123, 'runoob']
+['abcd', 786, 2.23, 'runoob', 70.2, 123, 'runoob']
+</code></pre>
+
+<h2 id="tuple-元组">tuple 元组</h2>
+
+<p>元组（tuple）与列表类似，不同之处在于元组的元素不能修改。元组写在小括号 () 里，元素之间用逗号隔开。</p>
+
+<pre><code>tuple = ( 'abcd', 786 , 2.23, 'runoob', 70.2  )
+tinytuple = (123, 'runoob')
+ 
+print (tuple)             # 输出完整元组
+print (tuple[0])          # 输出元组的第一个元素
+print (tuple[1:3])        # 输出从第二个元素开始到第三个元素
+print (tuple[2:])         # 输出从第三个元素开始的所有元素
+print (tinytuple * 2)     # 输出两次元组
+print (tuple + tinytuple) # 连接元组
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>('abcd', 786, 2.23, 'runoob', 70.2)
+abcd
+(786, 2.23)
+(2.23, 'runoob', 70.2)
+(123, 'runoob', 123, 'runoob')
+('abcd', 786, 2.23, 'runoob', 70.2, 123, 'runoob')
+</code></pre>
+
+<p>虽然tuple的元素不可改变，但它可以包含可变的对象，比如list列表。</p>
+
+<p>构造包含 0 个或 1 个元素的元组比较特殊，所以有一些额外的语法规则：</p>
+
+<pre><code>tup1 = ()    # 空元组
+tup2 = (20,) # 一个元素，需要在元素后添加逗号
+</code></pre>
+
+<h2 id="set-集合">Set（集合）</h2>
+
+<p>集合（set）是一个无序不重复元素的序列。</p>
+
+<p>基本功能是进行成员关系测试和删除重复元素。</p>
+
+<p>可以使用大括号 { } 或者 set() 函数创建集合，注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。</p>
+
+<p>创建格式：</p>
+
+<pre><code>parame = {value01,value02,...}
+或者
+set(value)
+</code></pre>
+
+<h2 id="dictionary-字典">Dictionary（字典）</h2>
+
+<p>字典（dictionary）是Python中另一个非常有用的内置数据类型。</p>
+
+<p>列表是有序的对象集合，字典是无序的对象集合。两者之间的区别在于：字典当中的元素是通过键来存取的，而不是通过偏移存取。</p>
+
+<p>字典是一种映射类型，字典用&rdquo;{ }&ldquo;标识，它是一个无序的键(key) : 值(value)对集合。</p>
+
+<p>键(key)必须使用不可变类型。</p>
+
+<p>在同一个字典中，键(key)必须是唯一的。</p>
+
+<pre><code>dict = {}
+dict['one'] = &quot;1 - 菜鸟教程&quot;
+dict[2]     = &quot;2 - 菜鸟工具&quot;
+ 
+tinydict = {'name': 'runoob','code':1, 'site': 'www.runoob.com'}
+ 
+ 
+print (dict['one'])       # 输出键为 'one' 的值
+print (dict[2])           # 输出键为 2 的值
+print (tinydict)          # 输出完整的字典
+print (tinydict.keys())   # 输出所有键
+print (tinydict.values()) # 输出所有值
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>1 - 菜鸟教程
+2 - 菜鸟工具
+{'name': 'runoob', 'site': 'www.runoob.com', 'code': 1}
+dict_keys(['name', 'site', 'code'])
+dict_values(['runoob', 'www.runoob.com', 1])
+</code></pre>
+
+<h2 id="数据类型转换">数据类型转换</h2>
+
+<pre><code>int(x [,base])
+
+将x转换为一个整数
+
+float(x)
+
+将x转换到一个浮点数
+
+complex(real [,imag])
+
+创建一个复数
+
+str(x)
+
+将对象 x 转换为字符串
+
+repr(x)
+
+将对象 x 转换为表达式字符串
+
+eval(str)
+
+用来计算在字符串中的有效Python表达式,并返回一个对象
+
+tuple(s)
+
+将序列 s 转换为一个元组
+
+list(s)
+
+将序列 s 转换为一个列表
+
+set(s)
+
+转换为可变集合
+
+dict(d)
+
+创建一个字典。d 必须是一个序列 (key,value)元组。
+
+frozenset(s)
+
+转换为不可变集合
+
+chr(x)
+
+将一个整数转换为一个字符
+
+ord(x)
+
+将一个字符转换为它的整数值
+
+hex(x)
+
+将一个整数转换为一个十六进制字符串
+
+oct(x)
+
+将一个整数转换为一个八进制字符串
+</code></pre>
+
+<h2 id="数据运算">数据运算</h2>
+
+<p>赋值运算符：
+这个和ios很不一样</p>
+
+<pre><code>=	简单的赋值运算符	c = a + b 将 a + b 的运算结果赋值为 c
++=	加法赋值运算符	c += a 等效于 c = c + a
+-=	减法赋值运算符	c -= a 等效于 c = c - a
+*=	乘法赋值运算符	c *= a 等效于 c = c * a
+/=	除法赋值运算符	c /= a 等效于 c = c / a
+%=	取模赋值运算符	c %= a 等效于 c = c % a
+**=	幂赋值运算符	c **= a 等效于 c = c ** a
+//=	取整除赋值运算符	c //= a 等效于 c = c // a
+</code></pre>
+
+<p>逻辑运算符</p>
+
+<pre><code>and	x and y	布尔&quot;与&quot; - 如果 x 为 False，x and y 返回 False，否则它返回 y 的计算值。	(a and b) 返回 20。
+or	x or y	布尔&quot;或&quot; - 如果 x 是 True，它返回 x 的值，否则它返回 y 的计算值。	(a or b) 返回 10。
+not	not x	布尔&quot;非&quot; - 如果 x 为 True，返回 False 。如果 x 为 False，它返回 True。	not(a and b) 返回 False
+</code></pre>
+
+<p>成员运算符</p>
+
+<pre><code>in	如果在指定的序列中找到值返回 True，否则返回 False。	x 在 y 序列中 , 如果 x 在 y 序列中返回 True。
+not in	如果在指定的序列中没有找到值返回 True，否则返回 False。	x 不在 y 序列中 , 如果 x 不在 y 序列中返回 True。
+</code></pre>
+
+<p>身份运算符</p>
+
+<pre><code>is	is 是判断两个标识符是不是引用自一个对象	x is y, 类似 id(x) == id(y) , 如果引用的是同一个对象则返回 True，否则返回 False
+is not	is not 是判断两个标识符是不是引用自不同对象	x is not y ， 类似 id(a) != id(b)。如果引用的不是同一个对象则返回结果 True，否则返回 False。
+</code></pre>
+
+<p><strong><em>is 与 == 区别：</em></strong></p>
+
+<p>is 用于判断两个变量引用对象是否为同一个， == 用于判断引用变量的值是否相等。</p>
+
+<p>运算优先级从高到低：</p>
+
+<pre><code>**	指数 (最高优先级)
+~ + -	按位翻转, 一元加号和减号 (最后两个的方法名为 +@ 和 -@)
+* / % //	乘，除，取模和取整除
++ -	加法减法
+&gt;&gt; &lt;&lt;	右移，左移运算符
+&amp;	位 'AND'
+^ |	位运算符
+&lt;= &lt; &gt; &gt;=	比较运算符
+&lt;&gt; == !=	等于运算符
+= %= /= //= -= += *= **=	赋值运算符
+is is not	身份运算符
+in not in	成员运算符
+and or not	逻辑运算符
+</code></pre>
+
+<h3 id="tips">tips：</h3>
+
+<p>ype 是用于求一个未知数据类型对象，而 isinstance 是用于判断一个对象是否是已知类型。</p>
+
+<p>type 不认为子类是父类的一种类型，而isinstance会认为子类是父类的一种类型。</p>
+
+<p>可以用 isinstance 判断子类对象是否继承于父类，type 不行。</p>
+
+<p>综合以上几点，type 与 isinstance 虽然都与数据类型相关，但两者其实用法不同，type 主要用于判断未知数据类型，isinstance 主要用于判断 A 类是否继承于 B 类：</p>]]></content>
+		</item>
+		
+		<item>
+			<title>ARKit总结</title>
+			<link>https://z-figaro.github.io/posts/arkit%E6%80%BB%E7%BB%93/</link>
+			<pubDate>Wed, 19 Dec 2018 15:40:19 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/arkit%E6%80%BB%E7%BB%93/</guid>
+			<description>ARkit是什么？ ARKit是WWDC 17中公开的系统库，可以提供增强现实的体验。 ARKit的工作原理： 1.相机捕捉现实景象---由ARKi</description>
+			<content type="html"><![CDATA[
+
+<h1 id="arkit是什么">ARkit是什么？</h1>
+
+<pre><code>ARKit是WWDC 17中公开的系统库，可以提供增强现实的体验。
+</code></pre>
+
+<h2 id="arkit的工作原理">ARKit的工作原理：</h2>
+
+<pre><code>1.相机捕捉现实景象---由ARKit实现
+2.在现实景象中显示2d/3d虚拟图像--scenneKit对应3d实现，spriteKit实现2d
+</code></pre>
+
+<p><img src="https://lh3.googleusercontent.com/-ZqTZUBgF1ig/W8f4EGb3-GI/AAAAAAAAB5s/ja-zOUSGE1QDrqLKA0cuYIAnUr5m1vi9ACHMYCw/I/arkit.png" alt="arkit" /></p>
+
+<h3 id="arscnview">ARscnview</h3>
+
+<p>用于显示3d虚拟的视图
+作用：管理一个ARsession，一个arscnview实例默认持有一个arsession。</p>
+
+<h3 id="arsession">ARsession</h3>
+
+<p>ARSession主要用于协调在构建增强现实体验的过程中各个关键步骤，如读取传感器数据，控制相机，分析图片等。</p>
+
+<h3 id="arconfiguration">ARconfiguration</h3>
+
+<p>ARWorldTrackingConfiguration：跟踪设备的位置、方向、平面检测和hit testing。
+AROrientationTrackingConfiguration：仅用于方向跟踪。
+ARFaceTrackingConfiguration：前置摄像头仅用于人脸跟踪。</p>
+
+<h3 id="arframe">ARframe</h3>
+
+<p>相机的位置数据，实质就是各种位置数据</p>
+
+<p>配合ARSession使用（currentFrame属性）,ARSession不停的获取视频帧信息，并结合底层的传感器信息，将处理好的跟踪信息和图像参数放到这个类中。</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>区块链是什么？</title>
+			<link>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+			<pubDate>Wed, 19 Dec 2018 15:38:42 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+			<description>&lt;h1 id=&#34;区块链&#34;&gt;区块链&lt;/h1&gt;
+
+&lt;h2 id=&#34;区块链到底是什么&#34;&gt;区块链到底是什么？&lt;/h2&gt;
+
+&lt;p&gt;区块链技术设计之初是为了解决不需要任何机构，组织来背书，大家就可以对某件事，某个规则，某个事物的价值和意义达成一种共识；遵守就可以得到正反馈，不遵守又想得到正反馈的任何行为都被设计的这一套区块链技术所防止。这就是我理解的区块链技术。近代以来的伟大技术好像都是这样为了理想诞生的，git之父Linus Torvalds（同样也是linux之父，发现为什么叫linux了。）为了不想和别人一起上班，不想天天面对别人，所以发明了git来管理代码。。。。。任性啊。所以区块链技术不是为了发币，发币只是提供正反馈的一种抽象机制；毕竟数字最容易提现。&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<h1 id="区块链">区块链</h1>
+
+<h2 id="区块链到底是什么">区块链到底是什么？</h2>
+
+<p>区块链技术设计之初是为了解决不需要任何机构，组织来背书，大家就可以对某件事，某个规则，某个事物的价值和意义达成一种共识；遵守就可以得到正反馈，不遵守又想得到正反馈的任何行为都被设计的这一套区块链技术所防止。这就是我理解的区块链技术。近代以来的伟大技术好像都是这样为了理想诞生的，git之父Linus Torvalds（同样也是linux之父，发现为什么叫linux了。）为了不想和别人一起上班，不想天天面对别人，所以发明了git来管理代码。。。。。任性啊。所以区块链技术不是为了发币，发币只是提供正反馈的一种抽象机制；毕竟数字最容易提现。</p>
+
+<p>区块链技术现在被传播的定义是：去中心化的分布式账本数据库。
+  在一定时间段内有任何数据变化，系统中每个节点都可以来进行记录，系统会评判出最先最准确完成记录的节点，并将其记录“打包”成一个“数据区块”发送给其他节点。其他节点验证区块中各项信息无误后，所有节点同步将这个新产生的区块保存下来，并与之前产生的区块链进行连接，形成一条最新的数据记录链条。即：系统中每个节点都有一份完整的数据记录。一个区块包含两个部分：区块头(BlockHeader)和数据变动部分。区块记录的所有数据变动通过默克尔树(MerkleTree)组织起来，默克尔树根(Root)的哈希值作为本区块里所有交易的信息被放入区块头。区块头还包含以下字段：前一个区块头的哈希值（或称哈希指针）、本区块的时间戳、高度(从第一个区块开始数，本区块是第几个块)以及其他信息。新的区块在经过系统共识验证后被添加到区块链上。因为任何输入端的细微变化都会对哈希函数的输出结果产生较大影响，再加上哈希指针的设计，所以通过区块链记录的数据通常难以篡改。比如，若有人尝试改写1号区块里的数据，那么存储在2号区块里的1号区块的哈希值将会产生巨大的变化，从而导致2号区块的哈希值随之发生变化，接着又影响存储在3号区块的2号区块的哈希值，以此类推，后续的所有区块数据都会发生变化。</p>
+
+<p>1.0：BTC
+2.0：ETH
+3.0：IPFS这样的具体应用</p>]]></content>
+		</item>
+		
+		<item>
+			<title>Go语言基础</title>
+			<link>https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</link>
+			<pubDate>Wed, 19 Dec 2018 15:38:14 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</guid>
+			<description>&lt;p&gt;go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<p>go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。</p>
+
+<h1 id="go语言基础">go语言基础</h1>
+
+<h2 id="go语言特性">GO语言特性</h2>
+
+<p>1.不用做内存管理
+2.天然支持高并发
+3.channel管道
+    管道最初是unix中的特性，因为进程之间是隔离的，如果两个进程之间需要资源交互；那么就把资源放到管道中。通过管道交互。
+4.多返回值</p>
+
+<h2 id="go-语言的包引入一般为-项目名-包名">Go 语言的包引入一般为: 项目名/包名</h2>
+
+<p><code>import &quot;test/controllers&quot;</code>
+方法的调用为: 包名.方法名()</p>
+
+<p><code>controllers.Test()</code>
+本包内方法名可为小写，包外调用方法名首字母必须为大写。</p>
+
+<h2 id="fmt包">fmt包</h2>
+
+<p>1.<strong>Print()</strong> 函数将参数列表 a 中的各个参数转换为字符串并写入到标准输出中。</p>
+
+<p>非字符串参数之间会添加空格，返回写入的字节数。</p>
+
+<p><code>func Print(a ...interface{}) (n int, err error)</code></p>
+
+<p>2.<strong>Println()</strong> 函数功能类似 Print，只不过最后会添加一个换行符。</p>
+
+<p>所有参数之间会添加空格，返回写入的字节数。</p>
+
+<p><code>func Println(a ...interface{}) (n int, err error)</code></p>
+
+<p>3.<strong><em>Printf()</em></strong> 函数将参数列表 a 填写到格式字符串 format 的占位符中。</p>
+
+<p>填写后的结果写入到标准输出中，返回写入的字节数。</p>
+
+<p><code>func Printf(format string, a ...interface{}) (n int, err error)</code></p>
+
+<p>实例：</p>
+
+<pre><code>   fmt.Print(&quot;a&quot;, &quot;b&quot;, 1, 2, 3, &quot;c&quot;, &quot;d&quot;, &quot;\n&quot;)
+	fmt.Println(&quot;a&quot;, &quot;b&quot;, 1, 2, 3, &quot;c&quot;, &quot;d&quot;)
+	fmt.Printf(&quot;ab %d %d %d cd\n&quot;, 1, 2, 3)
+	fmt.Println(&quot;你好&quot;)
+	
+    ab1 2 3cd
+    a b 1 2 3 c d
+    ab 1 2 3 cd
+    你好
+</code></pre>
+
+<h2 id="条件控制">条件控制</h2>
+
+<ol>
+<li>支持多条件匹配</li>
+</ol>
+
+<pre><code>switchswitch{{
+         casecase  11,,22,,33,,44::
+         defaultdefault::
+ }}
+</code></pre>
+
+<ol>
+<li><p>不同的 case 之间不使用 break 分隔，默认只会执行一个 case。</p></li>
+
+<li><p>如果想要执行多个 case，需要使用 fallthrough 关键字，也可用 break 终止。</p></li>
+</ol>
+
+<pre><code>switch{
+    case 1:
+    ...
+    if(...){
+        break
+    }
+
+    fallthrough // 此时switch(1)会执行case1和case2，但是如果满足if条件，则只执行case1
+
+    case 2:
+    ...
+    case 3:
+}
+</code></pre>
+
+<h3 id="select-语句">select 语句</h3>
+
+<p>select是Go中的一个控制结构，类似于用于通信的switch语句。每个case必须是一个通信操作，要么是发送要么是接收。</p>
+
+<p>select随机执行一个可运行的case。如果没有case可运行，它将阻塞，直到有case可运行。一个默认的子句应该总是可运行的。</p>
+
+<p>以下描述了 select 语句的语法：</p>
+
+<p>每个case都必须是一个通信
+所有channel表达式都会被求值
+所有被发送的表达式都会被求值
+如果任意某个通信可以进行，它就执行；其他被忽略。
+如果有多个case都可以运行，Select会随机公平地选出一个执行。其他不会执行。
+否则：
+如果有default子句，则执行该语句。
+如果没有default字句，select将阻塞，直到某个通信可以运行；Go不会重新对channel或值进行求值。</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   var c1, c2, c3 chan int
+   var i1, i2 int
+   select {
+      case i1 = &lt;-c1:
+         fmt.Printf(&quot;received &quot;, i1, &quot; from c1\n&quot;)
+      case c2 &lt;- i2:
+         fmt.Printf(&quot;sent &quot;, i2, &quot; to c2\n&quot;)
+      case i3, ok := (&lt;-c3):  // same as: i3, ok := &lt;-c3
+         if ok {
+            fmt.Printf(&quot;received &quot;, i3, &quot; from c3\n&quot;)
+         } else {
+            fmt.Printf(&quot;c3 is closed\n&quot;)
+         }
+      default:
+         fmt.Printf(&quot;no communication\n&quot;)
+   }    
+}
+</code></pre>
+
+<h2 id="函数">函数</h2>
+
+<pre><code>func function_name( [parameter list] ) [return_types] {
+   函数体
+}
+</code></pre>
+
+<ul>
+<li>func：函数由 func 开始声明</li>
+<li>function_name：函数名称，函数名和参数列表一起构成了函数签名。</li>
+<li>parameter list：参数列表，参数就像一个占位符，当函数被调用时，你可以将值传递给参数，这个值被称为实际参数。参数列表指定的是参数类型、顺序、及参数个数。参数是可选的，也就是说函数也可以不包含参数。</li>
+<li>return_types：返回类型，函数返回一列值。return_types 是该列值的数据类型。有些功能不需要返回值，这种情况下 return_types 不是必须的。</li>
+<li>函数体：函数定义的代码集合。</li>
+</ul>
+
+<p>实例：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   /* 定义局部变量 */
+   var a int = 100
+   var b int = 200
+   var ret int
+
+   /* 调用函数并返回最大值 */
+   ret = max(a, b)
+
+   fmt.Printf( &quot;最大值是 : %d\n&quot;, ret )
+}
+
+/* 函数返回两个数的最大值 */
+func max(num1, num2 int) int {
+   /* 定义局部变量 */
+   var result int
+
+   if (num1 &gt; num2) {
+      result = num1
+   } else {
+      result = num2
+   }
+   return result 
+}
+</code></pre>
+
+<h2 id="全局变量与局部变量">全局变量与局部变量</h2>
+
+<p>Go 语言程序中全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑。</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+/* 声明全局变量 */
+var g int = 20
+
+func main() {
+   /* 声明局部变量 */
+   var g int = 10
+
+   fmt.Printf (&quot;结果： g = %d\n&quot;,  g)
+}
+</code></pre>
+
+<p>一个更好的实例：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+/* 声明全局变量 */
+var a int = 20
+
+func main() {
+    /* main 函数中声明局部变量 */
+    var a int = 10
+    var b int = 20
+    var c int = 0
+
+    fmt.Printf(&quot;main()函数中 a = %d\n&quot;, a)
+    c = sum(a, b)
+    fmt.Printf(&quot;main()函数中 a = %d\n&quot;, a)
+    fmt.Printf(&quot;main()函数中 c = %d\n&quot;, c)
+}
+
+/* 函数定义-两数相加 */
+func sum(a, b int) int {
+    a = a + 1
+    fmt.Printf(&quot;sum() 函数中 a = %d\n&quot;, a)
+    fmt.Printf(&quot;sum() 函数中 b = %d\n&quot;, b)
+    return a + b
+}
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>main()函数中 a = 10
+sum() 函数中 a = 11
+sum() 函数中 b = 20
+main()函数中 a = 10
+main()函数中 c = 31
+</code></pre>
+
+<h2 id="切片">切片</h2>
+
+<p>Go 语言切片是对数组的抽象。</p>
+
+<p>Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片(&ldquo;动态数组&rdquo;),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。</p>
+
+<p>定义：
+<code>var identifier []type</code></p>
+
+<p>简写：
+&gt; var slice1 []type = make([]type, len)</p>
+
+<blockquote>
+<p>也可以简写为</p>
+
+<p>slice1 := make([]type, len)</p>
+</blockquote>
+
+<p>也可以指定容量，其中capacity为可选参数。
+&gt; make([]T, length, capacity)</p>
+
+<h3 id="切片初始化">切片初始化</h3>
+
+<blockquote>
+<p>s :=[] int {1,2,3 }
+直接初始化切片，[]表示是切片类型，{1,2,3}初始化值依次是1,2,3.其cap=len=3</p>
+
+<p>s := arr[:]
+初始化切片s,是数组arr的引用</p>
+
+<p>s := arr[startIndex:endIndex]
+将arr中从下标startIndex到endIndex-1 下的元素创建为一个新的切片</p>
+
+<p>s := arr[startIndex:]
+缺省endIndex时将表示一直到arr的最后一个元素</p>
+
+<p>s := arr[:endIndex]
+缺省startIndex时将表示从arr的第一个元素开始</p>
+
+<p>s1 := s[startIndex:endIndex]
+通过切片s初始化切片s1</p>
+
+<p>s :=make([]int,len,cap)
+通过内置函数make()初始化切片s,[]int 标识为其元素类型为int的切片</p>
+</blockquote>
+
+<h3 id="len-和-cap-函数">len() 和 cap() 函数</h3>
+
+<p>切片是可索引的，并且可以由 len() 方法获取长度。</p>
+
+<p>切片提供了计算容量的方法 cap() 可以测量切片最长可以达到多少。</p>
+
+<p>实例：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   var numbers = make([]int,3,5)
+
+   printSlice(numbers)
+}
+
+func printSlice(x []int){
+   fmt.Printf(&quot;len=%d cap=%d slice=%v\n&quot;,len(x),cap(x),x)
+}
+
+结果：
+len=3 cap=5 slice=[0 0 0]
+</code></pre>
+
+<h3 id="切片截取">切片截取</h3>
+
+<p>可以通过设置下限及上限来设置截取切片 [lower-bound:upper-bound]，实例如下</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   /* 创建切片 */
+   numbers := []int{0,1,2,3,4,5,6,7,8}   
+   printSlice(numbers)
+
+   /* 打印原始切片 */
+   fmt.Println(&quot;numbers ==&quot;, numbers)
+
+   /* 打印子切片从索引1(包含) 到索引4(不包含)*/
+   fmt.Println(&quot;numbers[1:4] ==&quot;, numbers[1:4])
+
+   /* 默认下限为 0*/
+   fmt.Println(&quot;numbers[:3] ==&quot;, numbers[:3])
+
+   /* 默认上限为 len(s)*/
+   fmt.Println(&quot;numbers[4:] ==&quot;, numbers[4:])
+
+   numbers1 := make([]int,0,5)
+   printSlice(numbers1)
+
+   /* 打印子切片从索引  0(包含) 到索引 2(不包含) */
+   number2 := numbers[:2]
+   printSlice(number2)
+
+   /* 打印子切片从索引 2(包含) 到索引 5(不包含) */
+   number3 := numbers[2:5]
+   printSlice(number3)
+
+}
+
+func printSlice(x []int){
+   fmt.Printf(&quot;len=%d cap=%d slice=%v\n&quot;,len(x),cap(x),x)
+}
+
+结果：
+len=9 cap=9 slice=[0 1 2 3 4 5 6 7 8]
+numbers == [0 1 2 3 4 5 6 7 8]
+numbers[1:4] == [1 2 3]
+numbers[:3] == [0 1 2]
+numbers[4:] == [4 5 6 7 8]
+len=0 cap=5 slice=[]
+len=2 cap=9 slice=[0 1]
+len=3 cap=7 slice=[2 3 4]
+</code></pre>
+
+<h3 id="append-和-copy-函数">append() 和 copy() 函数</h3>
+
+<p>如果想增加切片的容量，我们必须创建一个新的更大的切片并把原分片的内容都拷贝过来。</p>
+
+<p>下面的代码描述了从拷贝切片的 copy 方法和向切片追加新元素的 append 方法。</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   var numbers []int
+   printSlice(numbers)
+
+   /* 允许追加空切片 */
+   numbers = append(numbers, 0)
+   printSlice(numbers)
+
+   /* 向切片添加一个元素 */
+   numbers = append(numbers, 1)
+   printSlice(numbers)
+
+   /* 同时添加多个元素 */
+   numbers = append(numbers, 2,3,4)
+   printSlice(numbers)
+
+   /* 创建切片 numbers1 是之前切片的两倍容量*/
+   numbers1 := make([]int, len(numbers), (cap(numbers))*2)
+
+   /* 拷贝 numbers 的内容到 numbers1 */
+   copy(numbers1,numbers)
+   printSlice(numbers1)   
+}
+
+func printSlice(x []int){
+   fmt.Printf(&quot;len=%d cap=%d slice=%v\n&quot;,len(x),cap(x),x)
+}
+
+结果：
+len=0 cap=0 slice=[]
+len=1 cap=1 slice=[0]
+len=2 cap=2 slice=[0 1]
+len=5 cap=6 slice=[0 1 2 3 4]
+len=5 cap=12 slice=[0 1 2 3 4]
+
+</code></pre>
+
+<h3 id="范围range">范围Range</h3>
+
+<p>Go 语言中 range 关键字用于 for 循环中迭代数组(array)、切片(slice)、通道(channel)或集合(map)的元素。在数组和切片中它返回元素的索引和索引对应的值，在集合中返回 key-value 对的 key 值。</p>
+
+<h2 id="map">map</h2>
+
+<p>Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值。</p>
+
+<p>Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，我们无法决定它的返回顺序，这是因为 Map 是使用 hash 表来实现的。</p>
+
+<p>/* 声明变量，默认 map 是 nil */
+&gt; var map_variable map[key_data_type]value_data_type</p>
+
+<p>/* 使用 make 函数 */
+&gt; map_variable := make(map[key_data_type]value_data_type)</p>
+
+<p><strong>如果不初始化 map，那么就会创建一个 nil map。nil map 不能用来存放键值对</strong></p>
+
+<p>实例：</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    var countryCapitalMap map[string]string /*创建集合 */
+    countryCapitalMap = make(map[string]string)
+
+    /* map插入key - value对,各个国家对应的首都 */
+    countryCapitalMap [ &quot;France&quot; ] = &quot;Paris&quot;
+    countryCapitalMap [ &quot;Italy&quot; ] = &quot;罗马&quot;
+    countryCapitalMap [ &quot;Japan&quot; ] = &quot;东京&quot;
+    countryCapitalMap [ &quot;India &quot; ] = &quot;新德里&quot;
+
+    /*使用键输出地图值 */ for country := range countryCapitalMap {
+        fmt.Println(country, &quot;首都是&quot;, countryCapitalMap [country])
+    }
+
+    /*查看元素在集合中是否存在 */
+    captial, ok := countryCapitalMap [ &quot;美国&quot; ] /*如果确定是真实的,则存在,否则不存在 */
+    /*fmt.Println(captial) */
+    /*fmt.Println(ok) */
+    if (ok) {
+        fmt.Println(&quot;美国的首都是&quot;, captial)
+    } else {
+        fmt.Println(&quot;美国的首都不存在&quot;)
+    }
+}
+
+结果：
+France 首都是 Paris
+Italy 首都是 罗马
+Japan 首都是 东京
+India  首都是 新德里
+美国的首都不存在
+</code></pre>
+
+<h3 id="delete-函数">delete() 函数</h3>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    /* 创建map */
+    countryCapitalMap := map[string]string{&quot;France&quot;: &quot;Paris&quot;, &quot;Italy&quot;: &quot;Rome&quot;, &quot;Japan&quot;: &quot;Tokyo&quot;, &quot;India&quot;: &quot;New delhi&quot;}
+
+    fmt.Println(&quot;原始地图&quot;)
+
+    /* 打印地图 */
+    for country := range countryCapitalMap {
+        fmt.Println(country, &quot;首都是&quot;, countryCapitalMap [ country ])
+    }
+
+    /*删除元素*/ delete(countryCapitalMap, &quot;France&quot;)
+    fmt.Println(&quot;法国条目被删除&quot;)
+
+    fmt.Println(&quot;删除元素后地图&quot;)
+
+    /*打印地图*/
+    for country := range countryCapitalMap {
+        fmt.Println(country, &quot;首都是&quot;, countryCapitalMap [ country ])
+    }
+}
+
+结果：
+原始地图
+India 首都是 New delhi
+France 首都是 Paris
+Italy 首都是 Rome
+Japan 首都是 Tokyo
+法国条目被删除
+删除元素后地图
+Italy 首都是 Rome
+Japan 首都是 Tokyo
+India 首都是 New delhi
+</code></pre>
+
+<h2 id="递归函数">递归函数</h2>
+
+<pre><code>func recursion() {
+   recursion() /* 函数调用自身 */
+}
+
+func main() {
+   recursion()
+}
+</code></pre>
+
+<p>Go 语言支持递归。但我们在使用递归时，开发者需要设置退出条件，否则递归将陷入无限循环中。</p>
+
+<p>递归函数对于解决数学上的问题是非常有用的，就像计算阶乘，生成斐波那契数列等</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func fibonacci(n int) int {
+  if n &lt; 2 {
+   return n
+  }
+  return fibonacci(n-2) + fibonacci(n-1)
+}
+
+func main() {
+    var i int
+    for i = 0; i &lt; 10; i++ {
+       fmt.Printf(&quot;%d\t&quot;, fibonacci(i))
+    }
+}
+
+结果：
+0    1    1    2    3    5    8    13    21    34
+</code></pre>
+
+<h2 id="类型转换">类型转换</h2>
+
+<blockquote>
+<p>type_name(expression)</p>
+</blockquote>
+
+<p><strong>type_name 为类型，expression 为表达式。</strong></p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+   var sum int = 17
+   var count int = 5
+   var mean float32
+   
+   mean = float32(sum)/float32(count)
+   fmt.Printf(&quot;mean 的值为: %f\n&quot;,mean)
+}
+
+结果：
+mean 的值为: 3.400000
+</code></pre>
+
+<h2 id="接口">接口</h2>
+
+<p>Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。</p>
+
+<p>表达：</p>
+
+<pre><code>/* 定义接口 */
+type interface_name interface {
+   method_name1 [return_type]
+   method_name2 [return_type]
+   method_name3 [return_type]
+   ...
+   method_namen [return_type]
+}
+
+/* 定义结构体 */
+type struct_name struct {
+   /* variables */
+}
+
+/* 实现接口方法 */
+func (struct_name_variable struct_name) method_name1() [return_type] {
+   /* 方法实现 */
+}
+...
+func (struct_name_variable struct_name) method_namen() [return_type] {
+   /* 方法实现*/
+}
+</code></pre>
+
+<p>实例：</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+type Phone interface {
+    call()
+}
+
+type NokiaPhone struct {
+}
+
+func (nokiaPhone NokiaPhone) call() {
+    fmt.Println(&quot;I am Nokia, I can call you!&quot;)
+}
+
+type IPhone struct {
+}
+
+func (iPhone IPhone) call() {
+    fmt.Println(&quot;I am iPhone, I can call you!&quot;)
+}
+
+func main() {
+    var phone Phone
+
+    phone = new(NokiaPhone)
+    phone.call()
+
+    phone = new(IPhone)
+    phone.call()
+
+}
+
+在上面的例子中，我们定义了一个接口Phone，接口里面有一个方法call()。然后我们在main函数里面定义了一个Phone类型变量，并分别为之赋值为NokiaPhone和IPhone。然后调用call()方法，输出结果如下：
+
+I am Nokia, I can call you!
+I am iPhone, I can call you!
+</code></pre>
+
+<h2 id="错误处理">错误处理</h2>
+
+<pre><code>type error interface {
+    Error() string
+}
+</code></pre>
+
+<p>这是定义。</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+// 定义一个 DivideError 结构
+type DivideError struct {
+    dividee int
+    divider int
+}
+
+// 实现 `error` 接口
+func (de *DivideError) Error() string {
+    strFormat := `
+    Cannot proceed, the divider is zero.
+    dividee: %d
+    divider: 0
+`
+    return fmt.Sprintf(strFormat, de.dividee)
+}
+
+// 定义 `int` 类型除法运算的函数
+func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
+    if varDivider == 0 {
+        dData := DivideError{
+            dividee: varDividee,
+            divider: varDivider,
+        }
+        errorMsg = dData.Error()
+        return
+    } else {
+        return varDividee / varDivider, &quot;&quot;
+    }
+
+}
+
+func main() {
+
+    // 正常情况
+    if result, errorMsg := Divide(100, 10); errorMsg == &quot;&quot; {
+        fmt.Println(&quot;100/10 = &quot;, result)
+    }
+    // 当被除数为零的时候会返回错误信息
+    if _, errorMsg := Divide(100, 0); errorMsg != &quot;&quot; {
+        fmt.Println(&quot;errorMsg is: &quot;, errorMsg)
+    }
+
+}
+
+结果：
+100/10 =  10
+errorMsg is:  
+    Cannot proceed, the divider is zero.
+    dividee: 100
+    divider: 0
+</code></pre>]]></content>
+		</item>
+		
+		<item>
+			<title>IPFS基础</title>
+			<link>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</link>
+			<pubDate>Wed, 19 Dec 2018 15:37:53 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</guid>
+			<description>&lt;h1 id=&#34;ipfs是什么&#34;&gt;IPFS是什么：&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas
+from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bit-
+torrent swarm, exchanging git objects. IPFS provides an interface as simple
+as the HTTP web, but with permanence built in. You can also mount the world
+at /ipfs.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<h1 id="ipfs是什么">IPFS是什么：</h1>
+
+<pre><code>IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas
+from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bit-
+torrent swarm, exchanging git objects. IPFS provides an interface as simple
+as the HTTP web, but with permanence built in. You can also mount the world
+at /ipfs.
+</code></pre>
+
+<p>这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。</p>
+
+<h2 id="ipfs怎么搭建一个去中心网络">IPFS怎么搭建一个去中心网络</h2>
+
+<p><a href="https://www.jianshu.com/p/48a2739bade2" target="_blank">https://www.jianshu.com/p/48a2739bade2</a>
+这里把基本使用说的很详细，我可能会使用一部分，不过我会主要说明技术部分。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-s9WMbI9Lyjo/W3z8v1XUyZI/AAAAAAAAB4w/L9zacPObl94YVE5f3GniydkCbSUohTnUQCHMYCw/I/p2p-ipfs.jpg" alt="p2p-ipfs" /></p>
+
+<h3 id="ipfs是一个p2p网络-先来看看bittorrent的p2p网络是如何工作的">IPFS是一个p2p网络，先来看看BitTorrent的p2p网络是如何工作的？</h3>
+
+<p>想要bt下载一个文件，首先你需要一个种子文件torrent，种子文件包含至少一个 Tracker（一台服务器地址）信息和文件的分割记录信息。BT软件解析种子文件torrent，从里面找出来tracker，告诉tracker我要下载这个文件。tracker同时返回给你现在其它正在下载的节点信息，这个时候你的节点就正式加入了p2p下载网络，根据tracker返回的信息直接跟其它节点建立联系，开始数据传输。</p>
+
+<p>这种情况下Tracker成为了沟通p2p网络的关键一环，如果tracker服务器全部关闭的话，p2p网络就被关闭了。</p>
+
+<p>那么是不是说如果没有了Tracker，p2p就不能实现了？显然不是的，后来有了DHT（分布式哈希表），DHT技术的出现使得没有tracker也能进行p2p网络下载，用过电驴的读者应该都不陌生，电驴里面有一个选项，可以允许选择KAD（DHT的一种）网络进行搜索。这样一来p2p网络的适应性更强了，可以大大减轻tracker的负担。</p>
+
+<p>以上就是传统的P2P软件大概工作方式。
+IPFS的p2p网络使用的是DHT技术</p>
+
+<h3 id="什么是dht-distributed-hash-tables">什么是DHT ( Distributed Hash Tables ) ?</h3>
+
+<p>DHT是一个分布式系统, 它提供了一个类似哈希表一样的查询服务: 键值对存储在DHT中, 任何参与的节点都可以有效的检索给定键对应的值. 键值对的映射由网络中所有的节点维护, 每个节点负责一小部分路由和数据存储. 这样即使有节点加入或者离开, 对整个网络的影响都很小, 于是DHT可以扩展到非常庞大的节点(上千万)。</p>
+
+<p>DHT广泛应用于各种点对点系统, 用来存储节点的元数据。比如：BTC系统使用 MainlineDHT来维护节点。</p>
+
+<p>DHT具有以下性质:</p>
+
+<p>离散型(Autonomy and decentralization): 构成系统的节点之间都是对等的, 没有中央控制机制进行协调
+伸缩性(Scalability): 不论系统有多少节点, 都要求高效工作
+容错性(Fault tolerance): 不断有节点加入和离开, 不会影响整个系统的工作</p>
+
+<h3 id="简单介绍一席跟ipfs有关的三种dht技术">简单介绍一席跟IPFS有关的三种DHT技术</h3>
+
+<h4 id="kademlia-dht">Kademlia DHT</h4>
+
+<p>高效查询：查询的平均复杂度是 log2(n)，例如：10,000,000个节点只需要20次查询
+低开销：优化了发往其它节点的控制消息的数量
+可以抵御各种攻击
+广泛应用于各种点对点系统，包括：Guntella和BitTorrent，可以构建超过2千万个节点的网络</p>
+
+<h4 id="coral-dsht">Coral DSHT</h4>
+
+<p>Coral继承了Kademlia并且做了一些改造 ( 它认为直接在DHT上存储数据是浪费存储和带宽)</p>
+
+<h4 id="s-kademlia-dht">S/Kademlia DHT</h4>
+
+<p>S/Kademlia DHT同样是继承了Kademlia，并且做了一些改进，系统可以防止恶意攻击，例如女巫攻击。</p>
+
+<h3 id="ipfs的路由系统">IPFS的路由系统</h3>
+
+<p>ipfs系统的节点查找有两个需求：</p>
+
+<p>第一找到其他节点地址
+第二找到存储有特定数据的节点</p>
+
+<p>IPFS综合了S/Kademlia 、Coral和Mainline技术（能折腾吧，不过这种对技术的追求精神值得我们给ipfs团队鲜花和鼓掌）。Kademlia协议的工作方式比较复杂, 有兴趣了解的可以单独去查询一下, 本文不在进行更深入的讨论. KAD可以很高效进行路由查询服务。</p>
+
+<p>IPFS DHT的数据存储是根据数据的大小进行的：</p>
+
+<p>小于1KB的数据直接存储到DHT上面
+大于1KB的数据在DHT中存储的是节点ID</p>
+
+<h3 id="节点加入">节点加入</h3>
+
+<p>IPFS是基于DHT技术的，所以在IPFS网络里面是没有tracker存在的。那么一个新的节点创建后是如何加入网络的呢？</p>
+
+<p>新创建的节点必须知道至少一个已经在网络上的节点地址，连上那个节点，就可以加入网络了，所以ipfs系统提供了bootstrap命令来完成这个工作（通常情况不需要自己来做这样的操作，除非有一些特殊需求，例如：指定自己比较近的启动节点，搭建IPFS私有网络等）</p>
+
+<pre><code>ipfs bootstrap list 列出来启动节点
+ipfs bootstrap add [&lt;peer&gt;] 添加启动节点
+ipfs bootstrap rm [&lt;peer&gt;] 删除启动节点
+</code></pre>]]></content>
+		</item>
+		
+		<item>
+			<title>Sublime3各种技巧</title>
+			<link>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</link>
+			<pubDate>Wed, 19 Dec 2018 15:37:24 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</guid>
+			<description>&lt;h1 id=&#34;代码片段&#34;&gt;代码片段&lt;/h1&gt;
+
+&lt;p&gt;我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<h1 id="代码片段">代码片段</h1>
+
+<p>我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。</p>
+
+<p>具体的使用办法：</p>
+
+<p>按照如下顺序，点击添加代码片段：</p>
+
+<p>Tools &mdash; Developer &mdash; new snippet</p>
+
+<pre><code>&lt;snippet&gt;
+	&lt;content&gt;&lt;![CDATA[
+${1:this}
+]]&gt;&lt;/content&gt;
+	&lt;!-- Optional: 这里中间添加触发片段的关键词 --&gt;
+	&lt;tabTrigger&gt;&lt;/tabTrigger&gt;
+	&lt;!-- Optional: 这里是在哪个语言区域生效 --&gt;
+	&lt;scope&gt;source.go&lt;/scope&gt;
+	&lt;!-- Optional: 对这个片段的描述 --&gt;
+	&lt;description&gt;&lt;/description&gt;
+
+&lt;/snippet&gt;
+
+</code></pre>
+
+<p><strong>重点：</strong>
+* 保存的代码片段文件，后缀：.sublime-snippet
+like this:
+<code>printSlice.sublime-snippet</code></p>]]></content>
+		</item>
+		
+		<item>
+			<title>Gitbook使用总结</title>
+			<link>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+			<pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+			<description>&lt;p&gt;本文选自《Markdown 实用指南》 作者：毕小烦&lt;/p&gt;
+
+&lt;p&gt;GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。&lt;/p&gt;
+
+&lt;p&gt;使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。&lt;/p&gt;
+
+&lt;p&gt;除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。&lt;/p&gt;
+
+&lt;p&gt;对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。&lt;/p&gt;
+
+&lt;p&gt;可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。&lt;/p&gt;
+
+&lt;p&gt;GitBook 是开源的，地址：&lt;a href=&#34;https://github.com/GitbookIO/gitbook&#34; target=&#34;_blank&#34;&gt;https://github.com/GitbookIO/gitbook&lt;/a&gt;&lt;/p&gt;</description>
+			<content type="html"><![CDATA[<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
+
+<p>GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。</p>
+
+<p>使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。</p>
+
+<p>除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。</p>
+
+<p>对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。</p>
+
+<p>可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。</p>
+
+<p>GitBook 是开源的，地址：<a href="https://github.com/GitbookIO/gitbook" target="_blank">https://github.com/GitbookIO/gitbook</a></p>
+
+<p>GitBook 的功能：</p>
+
+<p>支持 Markdown 或 AsciiDoc 语法
+可导出静态站点或电子书（PDF、epub、mobi）
+支持多语言
+可设置封面
+支持变量、模板和模板继承
+有丰富的插件
+GitBook 的工具组合：</p>
+
+<p>Node.js：为了使用 npm 安装 GitBook，一定要先安装 Node.js。
+GitBook 命令：基于 Node.js 开发的命令行工具，用于创建和管理电子书。
+Markdown：GitBook 使用 Markdown 来写作，作者再也不用担心排版了。
+Git：GitBook 使用 Git 管理写作内容，方便多人协作和版本管理。
+Github/Gitlab：跟代码一样，写作的内容可以托管在 Github 或 Gitlab 中。
+gitbook.com：用于在线编写、发布和托管电子书的网站。
+GitBook 的使用场景：</p>
+
+<p>搭建公司内部的文档平台，用于公司内部的资料共享。
+发表开源的电子书，用于在互联网上共享自己的知识，普惠大众。
+GitBook 环境配置
+开始之前我们需要先安装：</p>
+
+<p>nodejs
+gitbook
+安装 Node.js
+因为 GitBook 是使用 Node.js 开发的，需要通过 Node.js 包管理工具 NPM 安装，所以在开始之前要先把 Nodejs 安装好。</p>
+
+<p>Node.js 下载地址：<a href="https://nodejs.org/zh-cn/" target="_blank">https://nodejs.org/zh-cn/</a></p>
+
+<p>NPM（node package manager），通常称为 node 包管理器。使用 NPM 可以对 node 包进行安装、卸载、更新、查看、搜索、发布等操作。</p>
+
+<p>安装完 Node.js，NPM 就可以直接用了。</p>
+
+<p>1.安装 GitBook
+使用 NPM 安装 GitBook 的命令行工具：</p>
+
+<p><code>$ sudo npm install gitbook-cli -g</code></p>
+
+<p>2.安装完成后查看 GitBook 的版本：</p>
+
+<pre><code>$ gitbook --version
+CLI version: 2.3.0
+GitBook version: 3.2.2
+</code></pre>
+
+<p>3.更新 GitBook命令：</p>
+
+<pre><code>$ npm update gitbook-cli -g
+</code></pre>
+
+<p>4.卸载 GitBook 命令：</p>
+
+<pre><code>$ sudo npm uninstall gitbook-cli -g
+</code></pre>
+
+<p>注意：</p>
+
+<p>本例中使用的是全局安装 GitBook 命令，还有一种安装方式是本地安装，两种方式有什么不同呢？</p>
+
+<p>本地安装：安装包会被下载到当前所在目录，因此只能在当前目录下使用。
+全局安装：安装包会被下载到到特定的系统目录下，安装包能够在所有目录下使用。
+例如，查看 macOS 下全局安装被安装到了哪里？</p>
+
+<pre><code>$ which gitbook
+/usr/local/bin/gitbook
+</code></pre>
+
+<p>GitBook 被安装到了 /usr/local/bin/ 目录下，因此可以全局使用。</p>
+
+<p>快速开始 GitBook
+初始化 GitBook</p>
+
+<h1 id="创建-mygitbook-文件夹-并切换到这个文件夹下面">创建 mygitbook 文件夹，并切换到这个文件夹下面</h1>
+
+<pre><code>~$ mkdir mygitbook &amp;&amp; cd mygitbook
+</code></pre>
+
+<h1 id="初始化-gitbook-工作目录-创建必要的文件">初始化 gitbook 工作目录，创建必要的文件</h1>
+
+<pre><code>~$ gitbook init
+warn: no summary file in this book
+info: create README.md
+info: create SUMMARY.md
+info: initialization is finished
+</code></pre>
+
+<p>然后会初始化 GitBook 目录，创建两个 md 格式的文件 README.md 和 SUMMARY.md</p>
+
+<p>README.md - 项目的介绍都写在这个文件里。
+SUMMARY.md - GitBook 的目录结构在这里配置。</p>
+
+<p>定义目录结构
+两种方法</p>
+
+<p>在 SUMMARY.md 文件中定义目录结构有两种方法。</p>
+
+<p>方法 ➊. 先定义好目录结构，通过 gitbook init 自动生成目录结构对应的文件夹和 Markdown 文件。</p>
+
+<p>方法 ➋. 先创建好文件夹和 Markdown 文件再来编辑目录结构。</p>
+
+<p>SUMMARY.md</p>
+
+<p>SUMMARY.md 的目录结构长什么样？ 看下面：</p>
+
+<h1 id="summary">Summary</h1>
+
+<ul>
+<li><a href="README.md" target="_blank">项目简介</a></li>
+<li><a href="docs/快速开始.md" target="_blank">快速开始</a>
+
+<ul>
+<li><a href="docs/环境搭建.md" target="_blank">环境搭建</a></li>
+<li><a href="docs/简单使用.md" target="_blank">简单使用</a></li>
+</ul></li>
+<li><a href="docs/深入学习" target="_blank">学入学习</a>
+这个目录建好以后在根目录下执行命令：</li>
+</ul>
+
+<pre><code>~$ gitbook init
+</code></pre>
+
+<p>那些没有的目录和文件都会被创建：</p>
+
+<p>info: create docs/快速开始.md
+info: create docs/环境搭建.md
+info: create docs/简单使用.md
+info: create docs/深入学习.md
+info: create SUMMARY.md
+info: initialization is finished
+注意： gitbook init 只支持生成两级目录</p>
+
+<p>启动服务
+在根目录执行命令：</p>
+
+<pre><code>~$ gitbook serve
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-Live reload server started on port: 35729" data-lang="Live reload server started on port: 35729">Press CTRL+C to quit ...
+
+info: 7 plugins are installed
+info: loading plugin &#34;livereload&#34;... OK
+info: loading plugin &#34;highlight&#34;... OK
+info: loading plugin &#34;search&#34;... OK
+info: loading plugin &#34;lunr&#34;... OK
+info: loading plugin &#34;sharing&#34;... OK
+info: loading plugin &#34;fontsettings&#34;... OK
+info: loading plugin &#34;theme-default&#34;... OK
+info: found 5 pages
+info: found 0 asset files
+info: &gt;&gt; generation finished with success in 1.9s !
+
+Starting server ...
+Serving book on http://localhost:4000 # 注意浏览地址</code></pre></div>
+<p>执行 gitbook serve命令后，会先编译书籍gitbook build，如果没有问题会打开一个 Web 服务器，默认监听 4000 端口。如果编译有问题，会抛出错误信息。</p>
+
+<p>查看效果
+用浏览器打开 <a href="http://localhost:4000/" target="_blank">http://localhost:4000/</a> 或 <a href="http://127.0.0.1:4000/" target="_blank">http://127.0.0.1:4000/</a> 查看显示书籍的效果。</p>
+
+<p>如果想发给别人看，把 localhost 换成自己电脑的 IP 地址。</p>
+
+<p>Tips:</p>
+
+<p>Linux 上查看 IP 地址的命令是： ifconfig</p>
+
+<p>Windows 上查看 IP 地址的命令是：ipconfig</p>
+
+<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
+
+<p>作者：毕小烦
+链接：<a href="https://www.jianshu.com/p/430f4569d776" target="_blank">https://www.jianshu.com/p/430f4569d776</a></p>]]></content>
+		</item>
 		
 		<item>
 			<title>Hugo搭建网站</title>

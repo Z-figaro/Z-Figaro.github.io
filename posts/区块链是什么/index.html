@@ -11,7 +11,7 @@
 	<link rel="manifest" href="/site.webmanifest">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 	<link rel="shortcut icon" href="/favicon.ico">
-	<title>Hugo搭建网站</title>
+	<title>区块链是什么？</title>
 	<link rel="stylesheet" href="/css/style.min.857f4a4adceba73f2fc8a745f8ca8b08437800bdf1c3275e2c7360f4994644ba.css" integrity="sha256-hX9KStzrpz8vyKdF+MqLCEN4AL3xwydeLHNg9JlGRLo=">
 	
 </head>
@@ -45,125 +45,38 @@
 	<main class="site-main section-inner animated fadeIn faster">
 		<article class="thin">
 			<header class="post-header">
-				<div class="post-meta"><span>Dec 18, 2018</span></div>
-				<h1>Hugo搭建网站</h1>
+				<div class="post-meta"><span>Dec 19, 2018</span></div>
+				<h1>区块链是什么？</h1>
 			</header>
 			<div class="content">
-				
+				<h1 id="区块链">区块链</h1>
 
-<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。
-  <!-- more --></p>
+<h2 id="区块链到底是什么">区块链到底是什么？</h2>
 
-<h2 id="搭建流程">搭建流程：</h2>
+<p>区块链技术设计之初是为了解决不需要任何机构，组织来背书，大家就可以对某件事，某个规则，某个事物的价值和意义达成一种共识；遵守就可以得到正反馈，不遵守又想得到正反馈的任何行为都被设计的这一套区块链技术所防止。这就是我理解的区块链技术。近代以来的伟大技术好像都是这样为了理想诞生的，git之父Linus Torvalds（同样也是linux之父，发现为什么叫linux了。）为了不想和别人一起上班，不想天天面对别人，所以发明了git来管理代码。。。。。任性啊。所以区块链技术不是为了发币，发币只是提供正反馈的一种抽象机制；毕竟数字最容易提现。</p>
 
-<p>以下是使用流程和心得，如果时间过久应该以<a href="https://gohugo.io/documentation/" target="_blank">官方文档</a>为准。</p>
+<p>区块链技术现在被传播的定义是：去中心化的分布式账本数据库。
+  在一定时间段内有任何数据变化，系统中每个节点都可以来进行记录，系统会评判出最先最准确完成记录的节点，并将其记录“打包”成一个“数据区块”发送给其他节点。其他节点验证区块中各项信息无误后，所有节点同步将这个新产生的区块保存下来，并与之前产生的区块链进行连接，形成一条最新的数据记录链条。即：系统中每个节点都有一份完整的数据记录。一个区块包含两个部分：区块头(BlockHeader)和数据变动部分。区块记录的所有数据变动通过默克尔树(MerkleTree)组织起来，默克尔树根(Root)的哈希值作为本区块里所有交易的信息被放入区块头。区块头还包含以下字段：前一个区块头的哈希值（或称哈希指针）、本区块的时间戳、高度(从第一个区块开始数，本区块是第几个块)以及其他信息。新的区块在经过系统共识验证后被添加到区块链上。因为任何输入端的细微变化都会对哈希函数的输出结果产生较大影响，再加上哈希指针的设计，所以通过区块链记录的数据通常难以篡改。比如，若有人尝试改写1号区块里的数据，那么存储在2号区块里的1号区块的哈希值将会产生巨大的变化，从而导致2号区块的哈希值随之发生变化，接着又影响存储在3号区块的2号区块的哈希值，以此类推，后续的所有区块数据都会发生变化。</p>
 
-<h3 id="安装">安装：</h3>
-
-<pre><code>使用brew安装hugo
-</code></pre>
-
-<blockquote>
-<p>没有brew的话：</p>
-</blockquote>
-
-<pre><code>$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-
-<blockquote>
-<p>安装hugo</p>
-</blockquote>
-
-<pre><code>$ brew new Hugo
-</code></pre>
-
-<h3 id="hugo使用">hugo使用：</h3>
-
-<p>在你想存放网站的地方使用：</p>
-
-<pre><code>$ hugo new site mysite
-</code></pre>
-
-<p>进入路径</p>
-
-<pre><code>$ cd mysite
-</code></pre>
-
-<p>在该目录下面你可以看到这些文件</p>
-
-<pre><code>#blog
-#├── archetypes
-#│   └── default.md
-#├── config.toml
-#├── content
-#├── data
-#├── layouts
-#├── static
-#└── themes
-</code></pre>
-
-<p>其中最关键的是config.toml,这是网站的配置文件。</p>
-
-<ul>
-<li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
-<li>content：包括网站内容，全部使用markdown格式</li>
-<li>layouts：包括了网站的模版，决定内容如何呈现</li>
-<li>static：包括了css, js, fonts, media等，决定网站的外观</li>
-<li>themes: 网站主题文件</li>
-</ul>
-
-<p>你可以下载自己喜欢的主题，或者使用默认的。</p>
-
-<p>主题使用submodule来git clone 是最方便的；也是官方建议的。</p>
-
-<h3 id="安装主题">安装主题：</h3>
-
-<p>在<a href="https://themes.gohugo.io/" target="_blank">官方地址</a>下载主题有两种clone方式。</p>
-
-<p>可以直接cd到theme主题文件下</p>
-
-<pre><code>git clone https://github.com/olOwOlo/hugo-theme-even themes/even
-</code></pre>
-
-<p>也可以添加到git的submodule中，如果做travis自动部署，或者对主题做了修改。那么这是首选的方式。</p>
-
-<pre><code>git submodule add https://github.com/olOwOlo/hugo-theme-even.git themes/even
-</code></pre>
-
-<p>如果修改了主题，这个要根据每个主题文件不同的设置。有的需要在主题目录下重新build</p>
-
-<pre><code>cd themes/even &amp;&amp; npm i &amp;&amp; npm start
-</code></pre>
-
-<h3 id="页面设置和发布文章">页面设置和发布文章</h3>
-
-<p>如果你想根据主题设置网站page：</p>
-
-<pre><code>hugo new xxxx.md
-</code></pre>
-
-<p>如果你想生成新文章：</p>
-
-<pre><code>hugo new posts/my-first-post.md
-</code></pre>
-
-<h3 id="评论功能">评论功能：</h3>
-
-<p>可以参考<a href="https://zh4ui.net/post/2017-04-20-hugo-with-disqus/" target="_blank">这篇文章</a></p>
-
+<p>1.0：BTC
+2.0：ETH
+3.0：IPFS这样的具体应用</p>
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://z-figaro.github.io/tags/hugo">hugo</a></span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://z-figaro.github.io/tags/blockchain">blockchain</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>625 Words</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-12-18 17:14 &#43;0800</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>866 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-12-19 15:38 &#43;0800</p>
 			</footer>
 		</article>
 		<div class="post-nav thin">
-			<a class="next-post" href="https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Gitbook使用总结</span>
+			<a class="next-post" href="https://z-figaro.github.io/posts/arkit%E6%80%BB%E7%BB%93/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>ARKit总结</span>
+			</a>
+			<a class="prev-post" href="https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Go语言基础</span>
 			</a>
 		</div>
 		<div id="disqus" class="thin">

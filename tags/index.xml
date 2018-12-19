@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Tue, 18 Dec 2018 17:14:28 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Dec 2018 15:38:42 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blockchain</title>
+      <link>https://z-figaro.github.io/tags/blockchain/</link>
+      <pubDate>Wed, 19 Dec 2018 15:38:42 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitbook</title>
+      <link>https://z-figaro.github.io/tags/gitbook/</link>
+      <pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/gitbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://z-figaro.github.io/tags/go/</link>
+      <pubDate>Wed, 19 Dec 2018 15:38:14 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hugo</title>
@@ -18,6 +45,42 @@
       <pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
       
       <guid>https://z-figaro.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>https://z-figaro.github.io/tags/ios/</link>
+      <pubDate>Wed, 19 Dec 2018 15:40:19 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ipfs</title>
+      <link>https://z-figaro.github.io/tags/ipfs/</link>
+      <pubDate>Wed, 19 Dec 2018 15:37:53 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/ipfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://z-figaro.github.io/tags/python/</link>
+      <pubDate>Wed, 19 Dec 2018 15:40:38 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sublime</title>
+      <link>https://z-figaro.github.io/tags/sublime/</link>
+      <pubDate>Wed, 19 Dec 2018 15:37:24 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/sublime/</guid>
       <description></description>
     </item>
     

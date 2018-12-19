@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<title>Gitbook使用总结</title>
+	<link rel="stylesheet" href="/css/style.min.857f4a4adceba73f2fc8a745f8ca8b08437800bdf1c3275e2c7360f4994644ba.css" integrity="sha256-hX9KStzrpz8vyKdF+MqLCEN4AL3xwydeLHNg9JlGRLo=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://z-figaro.github.io/">Figaro ZP</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="/posts/">Posts</a>
+					<a href="/about-me/">About</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://www.facebook.com/zp.figaro.5" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="zpfigaro@gmail.com" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://github.com/Z-figaro" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast" style="display: none;">
+		<ul>
+			<li><a href="/posts/">Posts</a></li>
+			<li><a href="/about-me/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 19, 2018</span></div>
+				<h1>Gitbook使用总结</h1>
+			</header>
+			<div class="content">
+				<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
+
+<p>GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。</p>
+
+<p>使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。</p>
+
+<p>除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。</p>
+
+<p>对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。</p>
+
+<p>可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。</p>
+
+<p>GitBook 是开源的，地址：<a href="https://github.com/GitbookIO/gitbook" target="_blank">https://github.com/GitbookIO/gitbook</a></p>
+
+<p>GitBook 的功能：</p>
+
+<p>支持 Markdown 或 AsciiDoc 语法
+可导出静态站点或电子书（PDF、epub、mobi）
+支持多语言
+可设置封面
+支持变量、模板和模板继承
+有丰富的插件
+GitBook 的工具组合：</p>
+
+<p>Node.js：为了使用 npm 安装 GitBook，一定要先安装 Node.js。
+GitBook 命令：基于 Node.js 开发的命令行工具，用于创建和管理电子书。
+Markdown：GitBook 使用 Markdown 来写作，作者再也不用担心排版了。
+Git：GitBook 使用 Git 管理写作内容，方便多人协作和版本管理。
+Github/Gitlab：跟代码一样，写作的内容可以托管在 Github 或 Gitlab 中。
+gitbook.com：用于在线编写、发布和托管电子书的网站。
+GitBook 的使用场景：</p>
+
+<p>搭建公司内部的文档平台，用于公司内部的资料共享。
+发表开源的电子书，用于在互联网上共享自己的知识，普惠大众。
+GitBook 环境配置
+开始之前我们需要先安装：</p>
+
+<p>nodejs
+gitbook
+安装 Node.js
+因为 GitBook 是使用 Node.js 开发的，需要通过 Node.js 包管理工具 NPM 安装，所以在开始之前要先把 Nodejs 安装好。</p>
+
+<p>Node.js 下载地址：<a href="https://nodejs.org/zh-cn/" target="_blank">https://nodejs.org/zh-cn/</a></p>
+
+<p>NPM（node package manager），通常称为 node 包管理器。使用 NPM 可以对 node 包进行安装、卸载、更新、查看、搜索、发布等操作。</p>
+
+<p>安装完 Node.js，NPM 就可以直接用了。</p>
+
+<p>1.安装 GitBook
+使用 NPM 安装 GitBook 的命令行工具：</p>
+
+<p><code>$ sudo npm install gitbook-cli -g</code></p>
+
+<p>2.安装完成后查看 GitBook 的版本：</p>
+
+<pre><code>$ gitbook --version
+CLI version: 2.3.0
+GitBook version: 3.2.2
+</code></pre>
+
+<p>3.更新 GitBook命令：</p>
+
+<pre><code>$ npm update gitbook-cli -g
+</code></pre>
+
+<p>4.卸载 GitBook 命令：</p>
+
+<pre><code>$ sudo npm uninstall gitbook-cli -g
+</code></pre>
+
+<p>注意：</p>
+
+<p>本例中使用的是全局安装 GitBook 命令，还有一种安装方式是本地安装，两种方式有什么不同呢？</p>
+
+<p>本地安装：安装包会被下载到当前所在目录，因此只能在当前目录下使用。
+全局安装：安装包会被下载到到特定的系统目录下，安装包能够在所有目录下使用。
+例如，查看 macOS 下全局安装被安装到了哪里？</p>
+
+<pre><code>$ which gitbook
+/usr/local/bin/gitbook
+</code></pre>
+
+<p>GitBook 被安装到了 /usr/local/bin/ 目录下，因此可以全局使用。</p>
+
+<p>快速开始 GitBook
+初始化 GitBook</p>
+
+<h1 id="创建-mygitbook-文件夹-并切换到这个文件夹下面">创建 mygitbook 文件夹，并切换到这个文件夹下面</h1>
+
+<pre><code>~$ mkdir mygitbook &amp;&amp; cd mygitbook
+</code></pre>
+
+<h1 id="初始化-gitbook-工作目录-创建必要的文件">初始化 gitbook 工作目录，创建必要的文件</h1>
+
+<pre><code>~$ gitbook init
+warn: no summary file in this book
+info: create README.md
+info: create SUMMARY.md
+info: initialization is finished
+</code></pre>
+
+<p>然后会初始化 GitBook 目录，创建两个 md 格式的文件 README.md 和 SUMMARY.md</p>
+
+<p>README.md - 项目的介绍都写在这个文件里。
+SUMMARY.md - GitBook 的目录结构在这里配置。</p>
+
+<p>定义目录结构
+两种方法</p>
+
+<p>在 SUMMARY.md 文件中定义目录结构有两种方法。</p>
+
+<p>方法 ➊. 先定义好目录结构，通过 gitbook init 自动生成目录结构对应的文件夹和 Markdown 文件。</p>
+
+<p>方法 ➋. 先创建好文件夹和 Markdown 文件再来编辑目录结构。</p>
+
+<p>SUMMARY.md</p>
+
+<p>SUMMARY.md 的目录结构长什么样？ 看下面：</p>
+
+<h1 id="summary">Summary</h1>
+
+<ul>
+<li><a href="README.md" target="_blank">项目简介</a></li>
+<li><a href="docs/快速开始.md" target="_blank">快速开始</a>
+
+<ul>
+<li><a href="docs/环境搭建.md" target="_blank">环境搭建</a></li>
+<li><a href="docs/简单使用.md" target="_blank">简单使用</a></li>
+</ul></li>
+<li><a href="docs/深入学习" target="_blank">学入学习</a>
+这个目录建好以后在根目录下执行命令：</li>
+</ul>
+
+<pre><code>~$ gitbook init
+</code></pre>
+
+<p>那些没有的目录和文件都会被创建：</p>
+
+<p>info: create docs/快速开始.md
+info: create docs/环境搭建.md
+info: create docs/简单使用.md
+info: create docs/深入学习.md
+info: create SUMMARY.md
+info: initialization is finished
+注意： gitbook init 只支持生成两级目录</p>
+
+<p>启动服务
+在根目录执行命令：</p>
+
+<pre><code>~$ gitbook serve
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code>
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-Live reload server started on port: 35729" data-lang="Live reload server started on port: 35729">Press CTRL+C to quit ...
+
+info: 7 plugins are installed
+info: loading plugin &#34;livereload&#34;... OK
+info: loading plugin &#34;highlight&#34;... OK
+info: loading plugin &#34;search&#34;... OK
+info: loading plugin &#34;lunr&#34;... OK
+info: loading plugin &#34;sharing&#34;... OK
+info: loading plugin &#34;fontsettings&#34;... OK
+info: loading plugin &#34;theme-default&#34;... OK
+info: found 5 pages
+info: found 0 asset files
+info: &gt;&gt; generation finished with success in 1.9s !
+
+Starting server ...
+Serving book on http://localhost:4000 # 注意浏览地址</code></pre></div>
+<p>执行 gitbook serve命令后，会先编译书籍gitbook build，如果没有问题会打开一个 Web 服务器，默认监听 4000 端口。如果编译有问题，会抛出错误信息。</p>
+
+<p>查看效果
+用浏览器打开 <a href="http://localhost:4000/" target="_blank">http://localhost:4000/</a> 或 <a href="http://127.0.0.1:4000/" target="_blank">http://127.0.0.1:4000/</a> 查看显示书籍的效果。</p>
+
+<p>如果想发给别人看，把 localhost 换成自己电脑的 IP 地址。</p>
+
+<p>Tips:</p>
+
+<p>Linux 上查看 IP 地址的命令是： ifconfig</p>
+
+<p>Windows 上查看 IP 地址的命令是：ipconfig</p>
+
+<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
+
+<p>作者：毕小烦
+链接：<a href="https://www.jianshu.com/p/430f4569d776" target="_blank">https://www.jianshu.com/p/430f4569d776</a></p>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://z-figaro.github.io/tags/gitbook">gitbook</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1774 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-12-19 15:36 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Sublime3各种技巧</span>
+			</a>
+			<a class="prev-post" href="https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Hugo搭建网站</span>
+			</a>
+		</div>
+		<div id="disqus" class="thin">
+			<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zpfigaro-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2018 <a href="https://z-figaro.github.io/">Figaro ZP</a> &#183; <a href="https://creativecommons.org/licenses/by-figaro zp" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://z-figaro.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></p>
+	</footer>
+
+	<script>let haveHeader = true;</script>
+
+	<script src="/js/main.min.00689ba18bbf9422fda222b02b555f01d54bfbb9b6d02f9bcffad67bdb2ff2cd.js" integrity="sha256-AGiboYu/lCL9oiKwK1VfAdVL+7m20C+bz/rWe9sv8s0="></script>
+	
+</body>
+
+</html>

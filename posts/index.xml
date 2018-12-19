@@ -16,14 +16,20 @@
 			<pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
 			
 			<guid>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</guid>
-			<description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 ##搭建流程： 以下是使用流程和心得，如果时间过久</description>
-			<content type="html"><![CDATA[<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。
-  <!-- more -->
-##搭建流程：
-以下是使用流程和心得，如果时间过久应该以<a href="https://gohugo.io/documentation/" target="_blank">官方文档</a>为准。</p>
+			<description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 搭建流程： 以下是使用流程和心得，如果时间过久应该</description>
+			<content type="html"><![CDATA[
 
-<p>###安装：
-    使用brew安装hugo</p>
+<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。
+  <!-- more --></p>
+
+<h2 id="搭建流程">搭建流程：</h2>
+
+<p>以下是使用流程和心得，如果时间过久应该以<a href="https://gohugo.io/documentation/" target="_blank">官方文档</a>为准。</p>
+
+<h3 id="安装">安装：</h3>
+
+<pre><code>使用brew安装hugo
+</code></pre>
 
 <blockquote>
 <p>没有brew的话：</p>
@@ -39,7 +45,7 @@
 <pre><code>$ brew new Hugo
 </code></pre>
 
-<p>###hugo使用：</p>
+<h3 id="hugo使用">hugo使用：</h3>
 
 <p>在你想存放网站的地方使用：</p>
 
@@ -78,7 +84,7 @@
 
 <p>主题使用submodule来git clone 是最方便的；也是官方建议的。</p>
 
-<p>###安装主题：</p>
+<h3 id="安装主题">安装主题：</h3>
 
 <p>在<a href="https://themes.gohugo.io/" target="_blank">官方地址</a>下载主题有两种clone方式。</p>
 
@@ -97,7 +103,7 @@
 <pre><code>cd themes/even &amp;&amp; npm i &amp;&amp; npm start
 </code></pre>
 
-<p>###页面设置和发布文章</p>
+<h3 id="页面设置和发布文章">页面设置和发布文章</h3>
 
 <p>如果你想根据主题设置网站page：</p>
 
@@ -109,7 +115,9 @@
 <pre><code>hugo new posts/my-first-post.md
 </code></pre>
 
-<p>###评论功能：</p>
+<h3 id="评论功能">评论功能：</h3>
+
+<p>可以参考<a href="https://zh4ui.net/post/2017-04-20-hugo-with-disqus/" target="_blank">这篇文章</a></p>
 ]]></content>
 		</item>
 		

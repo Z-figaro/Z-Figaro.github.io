@@ -16,8 +16,100 @@
 			<pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
 			
 			<guid>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</guid>
-			<description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。</description>
-			<content type="html"><![CDATA[<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。</p>
+			<description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 ##搭建流程： 以下是使用流程和心得，如果时间过久</description>
+			<content type="html"><![CDATA[<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。
+  <!-- more -->
+##搭建流程：
+以下是使用流程和心得，如果时间过久应该以<a href="https://gohugo.io/documentation/" target="_blank">官方文档</a>为准。</p>
+
+<p>###安装：
+    使用brew安装hugo</p>
+
+<blockquote>
+<p>没有brew的话：</p>
+</blockquote>
+
+<pre><code>$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<blockquote>
+<p>安装hugo</p>
+</blockquote>
+
+<pre><code>$ brew new Hugo
+</code></pre>
+
+<p>###hugo使用：</p>
+
+<p>在你想存放网站的地方使用：</p>
+
+<pre><code>$ hugo new site mysite
+</code></pre>
+
+<p>进入路径</p>
+
+<pre><code>$ cd mysite
+</code></pre>
+
+<p>在该目录下面你可以看到这些文件</p>
+
+<pre><code>#blog
+#├── archetypes
+#│   └── default.md
+#├── config.toml
+#├── content
+#├── data
+#├── layouts
+#├── static
+#└── themes
+</code></pre>
+
+<p>其中最关键的是config.toml,这是网站的配置文件。</p>
+
+<ul>
+<li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
+<li>content：包括网站内容，全部使用markdown格式</li>
+<li>layouts：包括了网站的模版，决定内容如何呈现</li>
+<li>static：包括了css, js, fonts, media等，决定网站的外观</li>
+<li>themes: 网站主题文件</li>
+</ul>
+
+<p>你可以下载自己喜欢的主题，或者使用默认的。</p>
+
+<p>主题使用submodule来git clone 是最方便的；也是官方建议的。</p>
+
+<p>###安装主题：</p>
+
+<p>在<a href="https://themes.gohugo.io/" target="_blank">官方地址</a>下载主题有两种clone方式。</p>
+
+<p>可以直接cd到theme主题文件下</p>
+
+<pre><code>git clone https://github.com/olOwOlo/hugo-theme-even themes/even
+</code></pre>
+
+<p>也可以添加到git的submodule中，如果做travis自动部署，或者对主题做了修改。那么这是首选的方式。</p>
+
+<pre><code>git submodule add https://github.com/olOwOlo/hugo-theme-even.git themes/even
+</code></pre>
+
+<p>如果修改了主题，这个要根据每个主题文件不同的设置。有的需要在主题目录下重新build</p>
+
+<pre><code>cd themes/even &amp;&amp; npm i &amp;&amp; npm start
+</code></pre>
+
+<p>###页面设置和发布文章</p>
+
+<p>如果你想根据主题设置网站page：</p>
+
+<pre><code>hugo new xxxx.md
+</code></pre>
+
+<p>如果你想生成新文章：</p>
+
+<pre><code>hugo new posts/my-first-post.md
+</code></pre>
+
+<p>###评论功能：</p>
 ]]></content>
 		</item>
 		

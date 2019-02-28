@@ -5,14 +5,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta itemprop="name" content="Go语言基础">
+<meta itemprop="description" content="go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。">
+
+
+<meta itemprop="datePublished" content="2018-12-19T15:38:14&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-19T15:38:14&#43;08:00" />
+<meta itemprop="wordCount" content="4243">
+
+
+
+<meta itemprop="keywords" content="go," />
+<meta property="og:title" content="Go语言基础" />
+<meta property="og:description" content="go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" />
+<meta property="article:published_time" content="2018-12-19T15:38:14&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-19T15:38:14&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go语言基础"/>
+<meta name="twitter:description" content="go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。"/>
+
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 	<link rel="shortcut icon" href="/favicon.ico">
+
 	<title>Go语言基础</title>
-	<link rel="stylesheet" href="/css/style.min.857f4a4adceba73f2fc8a745f8ca8b08437800bdf1c3275e2c7360f4994644ba.css" integrity="sha256-hX9KStzrpz8vyKdF+MqLCEN4AL3xwydeLHNg9JlGRLo=">
+	<link rel="stylesheet" href="https://z-figaro.github.io/css/style.min.c693329ce3bac2503f88115a4011a284a06d53e30f484562a37664dc4c5f0a74.css" integrity="sha256-xpMynOO6wlA/iBFaQBGihKBtU+MPSEVio3Zk3ExfCnQ=">
 	
 </head>
 
@@ -25,21 +48,23 @@
 					<a href="https://z-figaro.github.io/">Figaro ZP</a>
 				</div>
 				<nav class="site-nav hide-in-mobile">
-					<a href="/posts/">Posts</a>
-					<a href="/goposts/">StudyNote-Go</a>
-					<a href="/about-me/">About</a>
+					<a href="https://z-figaro.github.io/posts/">Posts</a>
+					<a href="https://z-figaro.github.io/studynote-go/">StudyNote-Go</a>
+					<a href="https://z-figaro.github.io/studynote-python/">StudyNote-Python</a>
+					<a href="https://z-figaro.github.io/about-me/">About</a>
 				</nav>
 			</div>
 			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://www.facebook.com/zp.figaro.5" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="zpfigaro@gmail.com" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://github.com/Z-figaro" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+				<span class="hdr-social hide-in-mobile"><a href="https://www.facebook.com/zp.figaro.5" target="_blank" rel="noopener" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="zpfigaro@gmail.com" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a><a href="https://github.com/Z-figaro" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
 			</div>
 		</div>
 	</header>
-	<div id="mobile-menu" class="animated fast" style="display: none;">
+	<div id="mobile-menu" class="animated fast">
 		<ul>
-			<li><a href="/posts/">Posts</a></li>
-			<li><a href="/goposts/">StudyNote-Go</a></li>
-			<li><a href="/about-me/">About</a></li>
+			<li><a href="https://z-figaro.github.io/posts/">Posts</a></li>
+			<li><a href="https://z-figaro.github.io/studynote-go/">StudyNote-Go</a></li>
+			<li><a href="https://z-figaro.github.io/studynote-python/">StudyNote-Python</a></li>
+			<li><a href="https://z-figaro.github.io/about-me/">About</a></li>
 		</ul>
 	</div>
 
@@ -53,9 +78,9 @@
 			<div class="content">
 				<p>go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。</p>
 
-<h1 id="go语言基础">go语言基础</h1>
+<h1 id="go语言基础">go语言基础<a href="#go语言基础" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
 
-<h2 id="go语言特性">GO语言特性</h2>
+<h2 id="go语言特性">GO语言特性<a href="#go语言特性" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>1.不用做内存管理
 2.天然支持高并发
@@ -63,7 +88,7 @@
     管道最初是unix中的特性，因为进程之间是隔离的，如果两个进程之间需要资源交互；那么就把资源放到管道中。通过管道交互。
 4.多返回值</p>
 
-<h2 id="go-语言的包引入一般为-项目名-包名">Go 语言的包引入一般为: 项目名/包名</h2>
+<h2 id="go-语言的包引入一般为-项目名-包名">Go 语言的包引入一般为: 项目名/包名<a href="#go-语言的包引入一般为-项目名-包名" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p><code>import &quot;test/controllers&quot;</code>
 方法的调用为: 包名.方法名()</p>
@@ -71,7 +96,7 @@
 <p><code>controllers.Test()</code>
 本包内方法名可为小写，包外调用方法名首字母必须为大写。</p>
 
-<h2 id="fmt包">fmt包</h2>
+<h2 id="fmt包">fmt包<a href="#fmt包" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>1.<strong>Print()</strong> 函数将参数列表 a 中的各个参数转换为字符串并写入到标准输出中。</p>
 
@@ -104,7 +129,7 @@
     你好
 </code></pre>
 
-<h2 id="条件控制">条件控制</h2>
+<h2 id="条件控制">条件控制<a href="#条件控制" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <ol>
 <li>支持多条件匹配</li>
@@ -137,7 +162,7 @@
 }
 </code></pre>
 
-<h3 id="select-语句">select 语句</h3>
+<h3 id="select-语句">select 语句<a href="#select-语句" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <p>select是Go中的一个控制结构，类似于用于通信的switch语句。每个case必须是一个通信操作，要么是发送要么是接收。</p>
 
@@ -178,7 +203,7 @@ func main() {
 }
 </code></pre>
 
-<h2 id="函数">函数</h2>
+<h2 id="函数">函数<a href="#函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <pre><code>func function_name( [parameter list] ) [return_types] {
    函数体
@@ -225,7 +250,7 @@ func max(num1, num2 int) int {
 }
 </code></pre>
 
-<h2 id="全局变量与局部变量">全局变量与局部变量</h2>
+<h2 id="全局变量与局部变量">全局变量与局部变量<a href="#全局变量与局部变量" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>Go 语言程序中全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑。</p>
 
@@ -283,7 +308,7 @@ main()函数中 a = 10
 main()函数中 c = 31
 </code></pre>
 
-<h2 id="切片">切片</h2>
+<h2 id="切片">切片<a href="#切片" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>Go 语言切片是对数组的抽象。</p>
 
@@ -304,7 +329,7 @@ main()函数中 c = 31
 <p>也可以指定容量，其中capacity为可选参数。
 &gt; make([]T, length, capacity)</p>
 
-<h3 id="切片初始化">切片初始化</h3>
+<h3 id="切片初始化">切片初始化<a href="#切片初始化" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <blockquote>
 <p>s :=[] int {1,2,3 }
@@ -329,7 +354,7 @@ main()函数中 c = 31
 通过内置函数make()初始化切片s,[]int 标识为其元素类型为int的切片</p>
 </blockquote>
 
-<h3 id="len-和-cap-函数">len() 和 cap() 函数</h3>
+<h3 id="len-和-cap-函数">len() 和 cap() 函数<a href="#len-和-cap-函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <p>切片是可索引的，并且可以由 len() 方法获取长度。</p>
 
@@ -355,7 +380,7 @@ func printSlice(x []int){
 len=3 cap=5 slice=[0 0 0]
 </code></pre>
 
-<h3 id="切片截取">切片截取</h3>
+<h3 id="切片截取">切片截取<a href="#切片截取" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <p>可以通过设置下限及上限来设置截取切片 [lower-bound:upper-bound]，实例如下</p>
 
@@ -408,7 +433,7 @@ len=2 cap=9 slice=[0 1]
 len=3 cap=7 slice=[2 3 4]
 </code></pre>
 
-<h3 id="append-和-copy-函数">append() 和 copy() 函数</h3>
+<h3 id="append-和-copy-函数">append() 和 copy() 函数<a href="#append-和-copy-函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <p>如果想增加切片的容量，我们必须创建一个新的更大的切片并把原分片的内容都拷贝过来。</p>
 
@@ -455,11 +480,11 @@ len=5 cap=12 slice=[0 1 2 3 4]
 
 </code></pre>
 
-<h3 id="范围range">范围Range</h3>
+<h3 id="范围range">范围Range<a href="#范围range" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <p>Go 语言中 range 关键字用于 for 循环中迭代数组(array)、切片(slice)、通道(channel)或集合(map)的元素。在数组和切片中它返回元素的索引和索引对应的值，在集合中返回 key-value 对的 key 值。</p>
 
-<h2 id="map">map</h2>
+<h2 id="map">map<a href="#map" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值。</p>
 
@@ -512,7 +537,7 @@ India  首都是 新德里
 美国的首都不存在
 </code></pre>
 
-<h3 id="delete-函数">delete() 函数</h3>
+<h3 id="delete-函数">delete() 函数<a href="#delete-函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <pre><code>package main
 
@@ -553,7 +578,7 @@ Japan 首都是 Tokyo
 India 首都是 New delhi
 </code></pre>
 
-<h2 id="递归函数">递归函数</h2>
+<h2 id="递归函数">递归函数<a href="#递归函数" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <pre><code>func recursion() {
    recursion() /* 函数调用自身 */
@@ -590,7 +615,7 @@ func main() {
 0    1    1    2    3    5    8    13    21    34
 </code></pre>
 
-<h2 id="类型转换">类型转换</h2>
+<h2 id="类型转换">类型转换<a href="#类型转换" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <blockquote>
 <p>type_name(expression)</p>
@@ -615,7 +640,7 @@ func main() {
 mean 的值为: 3.400000
 </code></pre>
 
-<h2 id="接口">接口</h2>
+<h2 id="接口">接口<a href="#接口" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <p>Go 语言提供了另外一种数据类型即接口，它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。</p>
 
@@ -688,7 +713,7 @@ I am Nokia, I can call you!
 I am iPhone, I can call you!
 </code></pre>
 
-<h2 id="错误处理">错误处理</h2>
+<h2 id="错误处理">错误处理<a href="#错误处理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <pre><code>type error interface {
     Error() string
@@ -772,8 +797,8 @@ errorMsg is:
 				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>IPFS基础</span>
 			</a>
 		</div>
-		<div id="disqus" class="thin">
-			<div id="disqus_thread"></div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -793,18 +818,19 @@ errorMsg is:
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-		</div>
+</div>
 	</main>
 
 	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2018 <a href="https://z-figaro.github.io/">Figaro ZP</a> &#183; <a href="https://creativecommons.org/licenses/by-figaro zp" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://z-figaro.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></p>
+		<p>&copy; 2019 <a href="https://z-figaro.github.io/">Figaro ZP</a> &#183; <a href="https://creativecommons.org/licenses/by-figaro zp" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://z-figaro.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
 	</footer>
 
-	<script>let haveHeader = true;</script>
 
-	<script src="/js/main.min.00689ba18bbf9422fda222b02b555f01d54bfbb9b6d02f9bcffad67bdb2ff2cd.js" integrity="sha256-AGiboYu/lCL9oiKwK1VfAdVL+7m20C+bz/rWe9sv8s0="></script>
-	
+	<script src="https://z-figaro.github.io/js/main.min.8f39f24808e9d0a9b02da58c2d2838da859dc0b7bdfadbdb1883aae8b6adacfe.js" integrity="sha256-jznySAjp0KmwLaWMLSg42oWdwLe9+tvbGIOq6LatrP4="></script>
+
 </body>
 
 </html>

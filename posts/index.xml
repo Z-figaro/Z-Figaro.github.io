@@ -7,8 +7,1096 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>All rights by figaro zp.</copyright>
-		<lastBuildDate>Wed, 19 Dec 2018 15:40:38 +0800</lastBuildDate>
+		<lastBuildDate>Wed, 03 Apr 2019 16:55:07 +0800</lastBuildDate>
 		<atom:link href="https://z-figaro.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title> Attribute 实现系统代码提示</title>
+			<link>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</link>
+			<pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</guid>
+			<description>资料放在最前面，方便同学查询。 官方文档 matt大神 attribute是GNU C特色之一,在iOS用的比较广泛.系统中有许多地方使用到. att</description>
+			<content type="html"><![CDATA[
+
+<p><a href="http://releases.llvm.org/3.8.0/tools/clang/docs/AttributeReference.html#opencl-address-spaces" target="_blank">资料</a>放在最前面，方便同学查询。
+<a href="https://gcc.gnu.org/onlinedocs/gcc-4.0.0/gcc/Function-Attributes.html" target="_blank">官方文档</a>
+<a href="https://nshipster.com/__attribute__/" target="_blank">matt大神</a></p>
+
+<p>attribute是GNU C特色之一,在iOS用的比较广泛.系统中有许多地方使用到. attribute可以设置函数属性（Function Attribute ）、变量属性（Variable Attribute ）和类型属性（Type Attribute)等.</p>
+
+<h2 id="函数属性-function-attribute">函数属性(Function Attribute)</h2>
+
+<ul>
+<li>noreturn</li>
+<li>noinline</li>
+<li>always_inline</li>
+<li>pure</li>
+<li>const</li>
+<li>nothrow</li>
+<li>sentinel</li>
+<li>format</li>
+<li>format_arg</li>
+<li>no_instrument_function</li>
+<li>section</li>
+<li>constructor</li>
+<li>destructor</li>
+<li>used</li>
+<li>unused</li>
+<li>deprecated</li>
+<li>weak</li>
+<li>malloc</li>
+<li>alias</li>
+<li>warn_unused_result</li>
+<li>nonnull</li>
+</ul>
+
+<h2 id="类型属性-type-attributes">类型属性(Type Attributes)</h2>
+
+<ul>
+<li>aligned</li>
+<li>packed</li>
+<li>transparent_union,</li>
+<li>unused,</li>
+<li>deprecated</li>
+<li>may_alias</li>
+</ul>
+
+<h2 id="变量属性-variable-attribute">变量属性(Variable Attribute)</h2>
+
+<ul>
+<li>aligned</li>
+<li>packed</li>
+</ul>
+
+<h2 id="clang特有的">Clang特有的</h2>
+
+<ul>
+<li>availability</li>
+<li>overloadable</li>
+</ul>
+
+<p>以上是我抄录的，并不只有这些。</p>
+
+<h1 id="书写格式">书写格式</h1>
+
+<p>书写格式：attribute后面会紧跟两对原括弧，括弧里面是相应的attribute参数</p>
+
+<pre><code>__attribute__((xxx))
+</code></pre>
+
+<h2 id="使用场景和技巧">使用场景和技巧</h2>
+
+<p>系统使用了宏定义封装了很多，建议遇到或者需要使用的特意记录一下。毕竟真的很多很多，你也不太常用的。
+其中我整理了一下比较常用的一些参数，转录了很多不同作者总结的，站在巨人的肩膀上；边走边抄。</p>
+
+<h3 id="更新了-之前的废弃">更新了，之前的废弃</h3>
+
+<pre><code>//可以自定义描述信息
+__attribute__((deprecated(&quot;已过期!&quot;)))
+
+//系统的宏定义
+DEPRECATED_ATTRIBUTE 
+</code></pre>
+
+<p>我们经常看到三方或者系统中，有的方法废弃了。比如alertview，那么我们就应该这样写。</p>
+
+<pre><code>//标记这个属性已过期
+@property (nonatomic, strong) NSString *name __attribute__((deprecated(&quot;属性已过期&quot;)));
+
+//标记方法已过期
+- (void) testOld __attribute__((deprecated(&quot;方法已过期, 请使用 test2&quot;))) {  
+}
+
+- (void) testNew {
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    //编译器警告，'testOld' is deprecated: 已过期, 请使用 testNew
+    [self testOld];
+
+    //编译器警告，提示 &quot;'name' 已过期...&quot;
+    NSLog(@&quot;%@&quot;, self.name);
+}
+</code></pre>
+
+<h3 id="更新了-不能用">更新了，不能用</h3>
+
+<pre><code>//可以自定义描述信息
+__attribute__((unavailable(&quot;已经废弃,请使用 xxxx&quot;)))
+
+
+//系统宏定义
+NS_UNAVAILABLE;
+UNAVAILABLE_ATTRIBUTE;
+</code></pre>
+
+<p>使用场景：</p>
+
+<ul>
+<li>自定义了类的初始化方法，不希望外界使用初始化初始化，并且给出正确的提示。比如单例不能使用init方法，应该用自定义的初始化方法。</li>
+<li>比希望继续使用某个属性，并且给出正确的提示。</li>
+</ul>
+
+<pre><code>@interface ViewController : UIViewController
+@property (nonatomic, strong) NSString *name __attribute__((unavailable(&quot;这个属性已经废弃&quot;)));
+
+#pragma mark - 初始化
+-(instancetype)init __attribute__((unavailable(&quot;这个方法已经废弃,请使用 initWithName:&quot;)));
+
+-(instancetype)initWithName:(NSString *)Name;
+@end
+
+//测试方法
+
+- (void) test {
+    //编译不通过，提示 &quot;'init' 已经废弃了...&quot;
+    ViewController *vc = [[ViewController alloc] init];
+
+    //编译不通过，提示 &quot;'name' 已经废弃了...&quot;
+    NSLog(@&quot;%@&quot;, vc.name);
+}
+</code></pre>
+
+<h3 id="block中提示self可能引起循环引用">block中提示self可能引起循环引用</h3>
+
+<pre><code>__attribute__((ns_consumes_self))
+
+//系统宏定义
+NS_REPLACES_RECEIVER
+
+//系统的封装
+#if __has_feature(attribute_ns_consumes_self)
+#define NS_REPLACES_RECEIVER __attribute__((ns_consumes_self)) NS_RETURNS_RETAINED
+#else
+#define NS_REPLACES_RECEIVER
+#endif
+</code></pre>
+
+<p>这是我在一些组件功能的时候，发现别人会提示在block中需要注意的。</p>
+
+<pre><code>-(NSString *)stringManager:(stringBlock) resultString NS_REPLACES_RECEIVER;
+
+它只能在方法中使用
+self.subString = ^NSString *(NSString *string) {
+        //这里就是弹警告
+        [self testOld];
+        NSLog(@&quot;string -- %@&quot;,string);
+        return [string substringFromIndex:1];
+    };
+</code></pre>
+
+<h3 id="在哪些平台或者版本可用">在哪些平台或者版本可用</h3>
+
+<pre><code>__attribute__((availability(ios,introduced=6.0,deprecated=8.0,obsoleted=10.0,message=&quot;ios10.0中废弃&quot;)));
+
+ios：iOS平台
+introduced：开始使用的版本
+deprecated：开始弃用的版本
+obsoleted：禁止使用的版本
+
+只能在方法中使用
+</code></pre>
+
+<h3 id="变量的作用域结束时-调用指定的函数">变量的作用域结束时，调用指定的函数</h3>
+
+<pre><code>__attribute__((cleanup(作用域结束调用的函数名)))
+</code></pre>
+
+<pre><code>void intCleanup(int *value){
+    NSLog(@&quot;cleanup:%d&quot;,*value);
+}
+
+void stringCleanup(__strong NSString **value){
+    NSLog(@&quot;cleanup:%@&quot;,*value);
+}
+
+void rectCleanup(CGRect *value){
+    CGRect temp = *value;
+    NSString *str = NSStringFromCGRect(temp);
+    NSLog(@&quot;cleanup:%@&quot;,str);
+}
+
+void appDelegateCleanup(__strong AppDelegate **value){
+    NSLog(@&quot;cleanup:%@&quot;,*value);
+}
+
+int main(int argc, char * argv[]) {
+    //第一个作用域
+    {
+        int a __attribute__((cleanup(intCleanup))) = 10;
+    }
+    //第二个作用域
+    {
+        NSString *string __attribute__((cleanup(stringCleanup))) = @&quot;张三&quot;;
+        CGRect rect __attribute__((cleanup(rectCleanup))) = {0,0,1,1};
+    }
+    //第三个作用域
+    {
+        AppDelegate *delegate __attribute__((cleanup(appDelegateCleanup))) = [[AppDelegate alloc] init];
+    }
+}
+
+
+//控制台输出
+1.xxx[6549:886516] cleanup:10
+2.xxx[6549:886516] cleanup:{{0, 0}, {1, 1}}
+3.xxx[6549:886516] cleanup:张三 //用一个作用域，这一个cleanup 是最先加的
+4.xxx[6780:893605] cleanup:&lt;AppDelegate: 0x6040000337a0&gt;
+5.xxx[6780:893605] AppDelegate dealloc //dealloc 在 cleanup之后
+</code></pre>
+
+<p>别人的总结：</p>
+
+<pre><code>1.一个作用域内有若干个cleanup的变量，他们的调用顺序是先入后出的栈式顺序
+2.调用时机：cleanup比dealloc早
+3.作用域的结束包括:大括号结束、return、goto、break、exception等
+</code></pre>
+
+<p>所以我感觉可以控制作用域和代码执行顺序：</p>
+
+<pre><code>//指向block的指针,觉得不好理解可以用typeof
+void blockCleanUp(void(^*block)()){
+    (*block)();
+}
+
+ void (^block)(void) __attribute__((cleanup(blockCleanUp))) = ^{
+        NSLog(@&quot;finish block&quot;);
+    };
+
+</code></pre>
+
+<p>这个好处就是,不用等到block最后才写某些代码,我们可以把它放在block的任意位置,防止忘记.</p>
+
+<p>参考：<a href="http://blog.sunnyxx.com/2014/09/15/objc-attribute-cleanup/#rd" target="_blank">黑魔法</a></p>
+
+<h3 id="一个类不能有子类">一个类不能有子类</h3>
+
+<p>使用与类，该类不能有子类</p>
+
+<pre><code>__attribute__((objc_subclassing_restricted))
+</code></pre>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+__attribute__((objc_subclassing_restricted))
+@interface KDClangTest : NSObject
+@end
+
+
+#import &quot;KDClangTest.h&quot;
+
+//这里编译出错，提示“Cannot subclass a class that was declared with the 'objc_subclassing_restricted' attribute”
+@interface KDClangSonTest : KDClangTest
+@end
+
+</code></pre>
+
+<h3 id="子类要重写某个方法-必须调用super">子类要重写某个方法，必须调用super</h3>
+
+<pre><code>//通用写法
+__attribute__((objc_requires_super))
+
+//系统宏定义，其实和上面是一样的
+NS_REQUIRES_SUPER
+
+</code></pre>
+
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+@interface KDClangTest : NSObject
+
+- (void)instanceMethod1 __attribute__((objc_requires_super));
+@end
+
+
+#import &quot;KDClangTest.h&quot;
+
+@interface KDClangSonTest : KDClangTest
+@end
+@implementation KDClangSonTest
+
+
+-(void)instanceMethod1 {
+    NSLog(@&quot;I am son&quot;);
+    //这里编译器会出现警告： Method possibly missing a [super instanceMethod1] call
+}
+</code></pre>
+
+<h3 id="在函数某个参数不能为空">在函数某个参数不能为空</h3>
+
+<pre><code>__attribute__((nonnull (x)))
+</code></pre>
+
+<pre><code>- (int)addNum1:(int *)num1 num2:(int *)num2  __attribute__((nonnull (1,2))){//1,2表示第一个和第二个参数不能为空
+    return  *num1 + *num2;
+}
+
+- (NSString *)getHost:(NSURL *)url __attribute__((nonnull (1))){//第一个参数不能为空
+    return url.host;
+}
+</code></pre>
+
+<h3 id="类或协议的名字在编译时指定成另一个">类或协议的名字在编译时指定成另一个</h3>
+
+<pre><code>__attribute__((objc_runtime_name(&quot;xxx&quot;)))
+</code></pre>
+
+<pre><code>在编译时指定成另一个.示例如下:
+__attribute__((objc_runtime_name(&quot;NSObject&quot;)))
+@interface SGObject :NSObject
+
+@end
+
+ //调用
+ NSLog(@&quot;%@&quot;,[SGObject class]);
+ //输出
+ 2016-07-22 11:18:00.934 Study[14355:5516261] NSObject
+
+</code></pre>
+
+<p>很有很多<a href="https://medium.com/@liushuaikobe/%E4%B8%8Eclang%E5%85%B1%E8%88%9E-attribute-8b6bc839958c" target="_blank">例子</a>
+<a href="https://www.jianshu.com/p/29eb7b5c8b2d" target="_blank">很多很多</a></p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Block使用详解</title>
+			<link>https://z-figaro.github.io/posts/block%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</link>
+			<pubDate>Tue, 02 Apr 2019 11:26:34 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/block%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</guid>
+			<description>Block本质 通过LLVM的编译器-rt子项目存储库中找到runtime下的Block源码 struct Block_layout { void *isa; int flags; int reserved; void (*invoke)(void *, ...); struct Block_descriptor *descriptor; /* Imported variables. */ }; 我们实现</description>
+			<content type="html"><![CDATA[
+
+<h1 id="block本质">Block本质</h1>
+
+<p>通过<a href="https://llvm.org/svn/llvm-project/compiler-rt/trunk/lib/BlocksRuntime/" target="_blank">LLVM的编译器-rt子项目存储库</a>中找到runtime下的Block源码</p>
+
+<pre><code>struct Block_layout {
+    void *isa;
+    int flags;
+    int reserved;
+    void (*invoke)(void *, ...);
+    struct Block_descriptor *descriptor;
+    /* Imported variables. */
+};
+</code></pre>
+
+<p>我们实现一个block，就是实现了这个结构体，isa指向block具体的类，invoke函数对应oc中代码的具体实现，所以block是oc的对象。
+因为block是一个对象，所以它可以作为一个参数来传递，也可以作为一种属性来操作，它本身也像一个闭包函数。所以block基本上就变成了一把瑞士军刀，它可以极大的简化代码，并且结构紧凑。你每天一定在不停的使用block。那么让我们来彻底掌握block的原理，使用方法，和注意事项。</p>
+
+<h1 id="block的使用">Block的使用：</h1>
+
+<p>block可以简化代码，并且实现链式，函数式编程。因为它可以返回，传递它本身。
+如果有一套操作链，那么最好用block封装好一系列操作步骤。</p>
+
+<h2 id="block-的声明">block 的声明</h2>
+
+<p>block的书写规则比较难写：</p>
+
+<p>作为局部变量</p>
+
+<blockquote>
+<p>returnType (^blockName)(parameterTypes) = ^returnType(parameters) {&hellip;};</p>
+</blockquote>
+
+<p>作为属性（property）
+&gt; @property (nonatomic, copy, nullability) returnType (^blockName)(parameterTypes);</p>
+
+<p>定义方法时，作为方法参数</p>
+
+<blockquote>
+<p>-(void)someMethodThatTakesABlock:(returnType (^nullability)(parameterTypes))blockName;</p>
+</blockquote>
+
+<p>调用方法时，作为参数传递
+&gt; [someObject someMethodThatTakesABlock:^returnType (parameters) {&hellip;}];</p>
+
+<p>作为类型别名 （typedef），增加代码可读性
+&gt; typedef returnType (^TypeName)(parameterTypes);
+&gt; TypeName blockName = ^returnType(parameters) {&hellip;};</p>
+
+<p>这里我们强烈建议按照最后一种方式typedef方式书写，可以极大的提高代码可读性。</p>
+
+<p>这里按顺序展示block的使用：
+声明：</p>
+
+<pre><code>void(^blockName)(NSString * str,BOOL success);
+ //省略参数的写法：void(^blockName1)(NSString *,BOOL);
+</code></pre>
+
+<p>block的调用：</p>
+
+<pre><code>blockName(@&quot;bwrgrets&quot;,YES);
+</code></pre>
+
+<p>block的实现：</p>
+
+<pre><code>blockName = ^(NSString * str,BOOL success){
+        //block的实现部分，block体
+        //声明和赋值时，block体中的代码都不会执行
+        NSLog(@&quot;执行blokc体中的代码&quot;);
+    };
+</code></pre>
+
+<h2 id="block-修饰局部变量">__block 修饰局部变量</h2>
+
+<p>说截获自动变量之前我们先看以下代码</p>
+
+<pre><code>int tmp = 2;
+int (^blk) (int) = ^(int count){
+    return count+tmp;
+};
+tmp = 3;
+int result = blk(2);
+NSLog(@&quot;%d&quot;,result);
+</code></pre>
+
+<p>以上代码会打印出多少呢？5还是4？？ 正确答案是4
+为什么是4呢？其实就是因为Block截获自动变量的原因</p>
+
+<pre><code>struct __ViewController__viewDidLoad_block_impl_0 {
+  struct __block_impl impl;
+  struct __ViewController__viewDidLoad_block_desc_0* Desc;
+  int tmp;
+  __ViewController__viewDidLoad_block_impl_0(void *fp, struct __ViewController__viewDidLoad_block_desc_0 *desc, int _tmp, int flags=0) : tmp(_tmp) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static int __ViewController__viewDidLoad_block_func_0(struct __ViewController__viewDidLoad_block_impl_0 *__cself, int count) {
+  int tmp = __cself-&gt;tmp; // bound by copy
+
+        return count+tmp;
+    }
+
+static struct __ViewController__viewDidLoad_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __ViewController__viewDidLoad_block_desc_0_DATA = { 0, sizeof(struct __ViewController__viewDidLoad_block_impl_0)};
+
+static void _I_ViewController_viewDidLoad(ViewController * self, SEL _cmd) {
+    ((void (*)(__rw_objc_super *, SEL))(void *)objc_msgSendSuper)((__rw_objc_super){(id)self, (id)class_getSuperclass(objc_getClass(&quot;ViewController&quot;))}, sel_registerName(&quot;viewDidLoad&quot;));
+    int tmp = 2;
+    int (*blk) (int) = ((int (*)(int))&amp;__ViewController__viewDidLoad_block_impl_0((void *)__ViewController__viewDidLoad_block_func_0, &amp;__ViewController__viewDidLoad_block_desc_0_DATA, tmp));
+    tmp = 3;
+    int result = ((int (*)(__block_impl *, int))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk, 2);
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_6n_mdf6rn0d5f5cw6r1h2620h3w0000gn_T_ViewController_b80e84_mi_0,result);
+}`__ViewController__viewDidLoad_block_impl_0`
+
+</code></pre>
+
+<p>通过以上代码可以看出,当我们在给Block类型变量赋值的时候，tmp变量同时被传入，并且被保存到了<strong>ViewController</strong>viewDidLoad_block_impl_0的struct中。这时候其实就是截获了自动变量，由于已经在struct类中保存了一份，即使后边更改，也不会影响Block截获的值。</p>
+
+<pre><code>int (*blk) (int) = ((int (*)(int))&amp;__ViewController__viewDidLoad_block_impl_0((void *)__ViewController__viewDidLoad_block_func_0, &amp;__ViewController__viewDidLoad_block_desc_0_DATA, tmp));
+</code></pre>
+
+<p>为什么要对局部变量进行截获呢？而全局变量和静态变量不需要截获，并且修改的的时候也不需要加__block呢？</p>
+
+<p>主要原因就是<strong>变量的生命周期</strong>。局部变量在代码块执行结束之后就会被释放，但是Block不一定在此时释放。所以就会出现变量超过生命周期的现象，此时对局部变量进行截获，即使局部变量被释放，但是Block同样还是可以正常使用的。因为全局变量和静态变量的释放时间肯定不会在Block之前，所以不必对他们进行截获。</p>
+
+<blockquote>
+<p>全局变量和静态变量存储在全局数据区；局部变量存储在栈中。
+不知道大家有没有想过一个问题，为什么需要<strong>block呢？如果没有</strong>block难道就修改不了变量了吗？</p>
+</blockquote>
+
+<p>我们先看一下加了__block编译器给我们做了啥</p>
+
+<pre><code>struct __Block_byref_tmpBlock_0 {
+  void *__isa;
+__Block_byref_tmpBlock_0 *__forwarding;
+ int __flags;
+ int __size;
+ int tmpBlock;
+};
+
+struct __ViewController__viewDidLoad_block_impl_0 {
+  struct __block_impl impl;
+  struct __ViewController__viewDidLoad_block_desc_0* Desc;
+  __Block_byref_tmpBlock_0 *tmpBlock; // by ref
+  __ViewController__viewDidLoad_block_impl_0(void *fp, struct __ViewController__viewDidLoad_block_desc_0 *desc, __Block_byref_tmpBlock_0 *_tmpBlock, int flags=0) : tmpBlock(_tmpBlock-&gt;__forwarding) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static int __ViewController__viewDidLoad_block_func_0(struct __ViewController__viewDidLoad_block_impl_0 *__cself, int count) {
+  __Block_byref_tmpBlock_0 *tmpBlock = __cself-&gt;tmpBlock; // bound by ref
+
+        (tmpBlock-&gt;__forwarding-&gt;tmpBlock) = 100;
+        return count+(tmpBlock-&gt;__forwarding-&gt;tmpBlock);
+    }
+static void __ViewController__viewDidLoad_block_copy_0(struct __ViewController__viewDidLoad_block_impl_0*dst, struct __ViewController__viewDidLoad_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;tmpBlock, (void*)src-&gt;tmpBlock, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static void __ViewController__viewDidLoad_block_dispose_0(struct __ViewController__viewDidLoad_block_impl_0*src) {_Block_object_dispose((void*)src-&gt;tmpBlock, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static struct __ViewController__viewDidLoad_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __ViewController__viewDidLoad_block_impl_0*, struct __ViewController__viewDidLoad_block_impl_0*);
+  void (*dispose)(struct __ViewController__viewDidLoad_block_impl_0*);
+} __ViewController__viewDidLoad_block_desc_0_DATA = { 0, sizeof(struct __ViewController__viewDidLoad_block_impl_0), __ViewController__viewDidLoad_block_copy_0, __ViewController__viewDidLoad_block_dispose_0};
+
+static void _I_ViewController_viewDidLoad(ViewController * self, SEL _cmd) {
+    ((void (*)(__rw_objc_super *, SEL))(void *)objc_msgSendSuper)((__rw_objc_super){(id)self, (id)class_getSuperclass(objc_getClass(&quot;ViewController&quot;))}, sel_registerName(&quot;viewDidLoad&quot;));
+    __attribute__((__blocks__(byref))) __Block_byref_tmpBlock_0 tmpBlock = {(void*)0,(__Block_byref_tmpBlock_0 *)&amp;tmpBlock, 0, sizeof(__Block_byref_tmpBlock_0), 2};
+    int (*blk) (int) = ((int (*)(int))&amp;__ViewController__viewDidLoad_block_impl_0((void *)__ViewController__viewDidLoad_block_func_0, &amp;__ViewController__viewDidLoad_block_desc_0_DATA, (__Block_byref_tmpBlock_0 *)&amp;tmpBlock, 570425344));
+    int result = ((int (*)(__block_impl *, int))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk, 2);
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_6n_mdf6rn0d5f5cw6r1h2620h3w0000gn_T_ViewController_a1c583_mi_0,result);
+}
+
+</code></pre>
+
+<p>这时候大家可以与前边没有加<strong>block的代码进行比较，两者的差别在哪里。 其实大家应该很容易发现加了</strong>block之后，变量形成了一个struct，这个struct中保存了变量的值，同时还有一个<strong>forwarding。这个</strong>forwarding其实就是为什么需要__block的关键。</p>
+
+<p>Block从栈复制到堆的时候，__block变量也会受到影响。如下:</p>
+
+<table>
+<thead>
+<tr>
+<th>__block变量的配置存储域</th>
+<th>Block从栈到堆时的影响</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>栈</td>
+<td>从栈复制到堆并被Block持有</td>
+</tr>
+
+<tr>
+<td>堆</td>
+<td>被Block持有</td>
+</tr>
+</tbody>
+</table>
+
+<p>ARC下，Block如果是栈的话，默认会copy到堆上。此时所使用的__block变量同时也会从栈被复制到堆上如下图</p>
+
+<p><img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190403145037.png?token=ANanysxB8RtkCal3Zzl19dfrzf0Q5Mx9ks5cpFgKwA%3D%3D" alt="" /></p>
+
+<p>那如果Block在堆上了，我们在Block中修改了变量，怎么让栈上的变量也同时能正确访问呢？这其实就是__forwarding功劳了。</p>
+
+<p><strong>block变量初始化的时候</strong>forwarding是指向本身自己的。当<strong>block变量从栈复制到堆上的时候，此时会将</strong>forwarding的值替换为复制到目标堆上的__block变量用结构体实例的地址。如下图：</p>
+
+<p><img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190403144858.png?token=ANanyrYm0e7R6XKH9fyEwvL8f4-ihE5tks5cpFecwA%3D%3D" alt="" /></p>
+
+<p>通过此功能，无论是在Block语法中、Block语法外使用<strong>block变量，还是</strong>block变量配置在栈上或堆上，都可以顺利地访问一个<strong>block变量。 到这里大家应该明白了&rdquo;</strong>block加了之后，是把变量的地址传入Block&rdquo;的说法是很片面的吧啦</p>
+
+<h2 id="block为什么用copy修饰">block为什么用copy修饰</h2>
+
+<blockquote>
+<p>栈是吃了吐 堆是吃了拉</p>
+</blockquote>
+
+<p>默认情况下，block会存档在栈中(栈是吃了吐)，所以block会在函数调用结束被销毁，在调用会报空指针异常，如果用copy修饰的话，可以使其保存在堆区(堆是吃了拉) ，它的生命周期会随着对象的销毁而结束的。只要对象不销毁，我们就可以调用在堆中的block。
+有时候，你会发现你用了strong也不会有任何问题，其实就是符合某些条件而已。官方建议copy修饰。</p>
+
+<p>block有三种：</p>
+
+<ol>
+<li>全局block</li>
+<li>堆block</li>
+<li>栈block</li>
+</ol>
+
+<p>这里先不展开讲，以后慢慢补充。</p>
+
+<h2 id="blockskit-大神示范block可以做什么">BlocksKit 大神示范block可以做什么</h2>
+
+<p>这里就有非常非常多，可以学习的地方了。当你以为搞懂了block的时候，你可以仔细看看这个三方库，这里会教你做人。</p>
+
+<p>这里有篇<a href="https://blog.csdn.net/ZeroOnet/article/details/77159789" target="_blank">文章</a>对BlocksKit有一定的分析，可以先看看。之后我也会慢慢做源码分析和做一些实际的项目。</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Xcode中如何使用断点</title>
+			<link>https://z-figaro.github.io/posts/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</link>
+			<pubDate>Thu, 21 Mar 2019 13:34:06 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</guid>
+			<description>断点调试 断点使用是我们开发提高效率，解决问题的不二法门；能够清楚的使用断点调试技巧，是基本技能。 edit breakpoint 编辑断点 reveal in breakpoint navigator 断点导航器 这就是我们的两</description>
+			<content type="html"><![CDATA[
+
+<h1 id="断点调试">断点调试</h1>
+
+<p>断点使用是我们开发提高效率，解决问题的不二法门；能够清楚的使用断点调试技巧，是基本技能。</p>
+
+<p><img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190321152623.png?token=ANanygXSAT9Zqbl4xpwd_xtaZQBoj6Hdks5ckzziwA%3D%3D" alt="" /></p>
+
+<ul>
+<li>edit breakpoint 编辑断点</li>
+<li>reveal in breakpoint navigator 断点导航器</li>
+</ul>
+
+<p>这就是我们的两个武器。</p>
+
+<h2 id="edit-breakpoint">Edit Breakpoint</h2>
+
+<p>是编辑断点信息，点击之后是：
+<img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190321152717.png?token=ANanyhxVEzBNmR0bNakNse7ofsMgd6bGks5ckz0XwA%3D%3D" alt="" /></p>
+
+<ul>
+<li><p>condition</p>
+
+<p>顾名思义，这是断点生效的条件。
+不能够识别：</p>
+
+<ol>
+<li>断点之外作用域的变量，函数</li>
+<li>预处理的宏定义</li>
+</ol></li>
+
+<li><p>ignore</p>
+
+<p>忽略次数，该断点生效几次之后才执行。</p></li>
+
+<li><p>action</p>
+
+<p>重点：断点生效之后。执行什么操作。提供了6种方案。</p>
+
+<ol>
+<li><a href="https://blog.csdn.net/yang3wei/article/details/7964226" target="_blank">applescript</a> 执行脚本</li>
+<li>Capture GPU Frame 捕获GPU当前所绘制的帧。该功能是辅助图形调试的</li>
+<li>Debugger Command  让断点执行LLDB调试命令，例如 po xxx</li>
+<li>Log Message 生成信息，和nslog很像</li>
+<li>Shell Command 执行一个命令文件和参数列表</li>
+<li>Sound  发出制定的声音
+<br /></li>
+</ol></li>
+
+<li><p>options
+直接执行不停顿，返回action的结果。</p></li>
+</ul>
+
+<p>接下来说明了概念就来实际操作：
+<img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190321152745.png?token=ANanyiNEVogkBvALzhsx2axsclHm2apVks5ckz00wA%3D%3D" alt="" /></p>
+
+<p>中间就是脚本语言写的内容，所以你可以写一套专门用来描述你这个断点要展示的信息的专用弹框。</p>
+
+<p>其中右侧显示的
+&gt; @expression@ = LLDB表达式
+&gt; %B = 断点的名称
+&gt; %H = 遇到该断点的次数</p>
+
+<p>使用好这些信息将会很酷，&rdquo;Your breakpoint %B has been hit %H times&rdquo;
+试试把这短话放到图示哪里。</p>
+
+<p><img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-21%20%E4%B8%8B%E5%8D%883.48.10.png?token=ANanym9lEcifSqOfjbAnGI4Bg_R_NbQ0ks5ck0J2wA%3D%3D" alt="" /></p>
+
+<p>如此，你可以得到一些总结性的调试信息。</p>
+
+<p>然后是最常用的 debugger command，这里使用的语句和在调试台使用的一模一样，如果不清楚可以看<a href="https://southpeak.github.io/2015/01/25/tool-lldb/" target="_blank">这里</a>。<strong>强烈建议阅读</strong></p>
+
+<p>常用的如：</p>
+
+<p>print xxx 显示全部信息
+po  xxx   显示变量的值
+exp a = xxx  改变 a的值，同时在代码和调试中生效
+image使用：</p>
+
+<pre><code>2015-01-25 14:12:01.007 test[18122:76474] *** Terminating app due to uncaught exception 'NSRangeException', reason: '*** -[__NSArrayI objectAtIndex:]: index 2 beyond bounds [0 .. 1]'
+*** First throw call stack:
+(
+	0   CoreFoundation                      0x00007fff8e06f66c __exceptionPreprocess + 172
+	1   libobjc.A.dylib                     0x00007fff886ad76e objc_exception_throw + 43
+	2   CoreFoundation                      0x00007fff8df487de -[__NSArrayI objectAtIndex:] + 190
+	3   test                                0x0000000100000de0 main + 384
+	4   libdyld.dylib                       0x00007fff8f1b65c9 start + 1
+)
+libc++abi.dylib: terminating with uncaught exception of type NSException
+
+</code></pre>
+
+<p>使用 image lookup定位错误 test具体的代码行数：
+image lookup &ndash;address</p>
+
+<pre><code>
+(lldb) image lookup --address 0x0000000100000de0
+      Address: test[0x0000000100000de0] (test.__TEXT.__text + 384)
+      Summary: test`main + 384 at main.m:23
+</code></pre>
+
+<p>image lookup &ndash;type 查看具体类型</p>
+
+<pre><code>(lldb) image lookup --type NSURL
+Best match found in /Users/**/Library/Developer/Xcode/DerivedData/test-byjqwkhxixddxudlnvqhrfughkra/Build/Products/Debug/test:
+id = {0x100000157}, name = &quot;NSURL&quot;, byte-size = 40, decl = NSURL.h:17, clang_type = &quot;@interface NSURL : NSObject{
+    NSString * _urlString;
+    NSURL * _baseURL;
+    void * _clients;
+    void * _reserved;
+}
+@property ( readonly,getter = absoluteString,setter = &lt;null selector&gt;,nonatomic ) NSString * absoluteString;
+@property ( readonly,getter = relativeString,setter = &lt;null selector&gt;,nonatomic ) NSString * relativeString;
+@property ( readonly,getter = baseURL,setter = &lt;null selector&gt;,nonatomic ) NSURL * baseURL;
+@property ( readonly,getter = absoluteURL,setter = &lt;null selector&gt;,nonatomic ) NSURL * absoluteURL;
+@property ( readonly,getter = scheme,setter = &lt;null selector&gt;,nonatomic ) NSString * scheme;
+@property ( readonly,getter = resourceSpecifier,setter = &lt;null selector&gt;,nonatomic ) NSString * resourceSpecifier;
+@property ( readonly,getter = host,setter = &lt;null selector&gt;,nonatomic ) NSString * host;
+@property ( readonly,getter = port,setter = &lt;null selector&gt;,nonatomic ) NSNumber * port;
+@property ( readonly,getter = user,setter = &lt;null selector&gt;,nonatomic ) NSString * user;
+@property ( readonly,getter = password,setter = &lt;null selector&gt;,nonatomic ) NSString * password;
+@property ( readonly,getter = path,setter = &lt;null selector&gt;,nonatomic ) NSString * path;
+@property ( readonly,getter = fragment,setter = &lt;null selector&gt;,nonatomic ) NSString * fragment;
+@property ( readonly,getter = parameterString,setter = &lt;null selector&gt;,nonatomic ) NSString * parameterString;
+@property ( readonly,getter = query,setter = &lt;null selector&gt;,nonatomic ) NSString * query;
+@property ( readonly,getter = relativePath,setter = &lt;null selector&gt;,nonatomic ) NSString * relativePath;
+@property ( readonly,getter = fileSystemRepresentation,setter = &lt;null selector&gt; ) const char * fileSystemRepresentation;
+@property ( readonly,getter = isFileURL,setter = &lt;null selector&gt;,readwrite ) BOOL fileURL;
+@property ( readonly,getter = standardizedURL,setter = &lt;null selector&gt;,nonatomic ) NSURL * standardizedURL;
+@property ( readonly,getter = filePathURL,setter = &lt;null selector&gt;,nonatomic ) NSURL * filePathURL;
+@end&quot;
+</code></pre>
+
+<h2 id="断点类型">断点类型</h2>
+
+<h3 id="异常断点">异常断点</h3>
+
+<p>异常断点是代码出现问题导致编译器抛出异常时触发的断点。它在断点导航器中设置。点击＋号，选择Exception Breakpoint选项。
+<img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190321161608.png?token=ANanysOjcF-bA53iW8LXYC7l4o6viNlAks5ck0iJwA%3D%3D" alt="" /></p>
+
+<p><strong>Exception</strong>
+选择响应Objective－C对象抛出的异常，也可以选择响应C++对象抛出的异常。</p>
+
+<p><strong>Break</strong>
+选择断点所接收的异常，是接收“Throw”语句抛出的异常还是Catch语句的
+<strong>Action</strong>
+和上面出现的一样，都是断点生效后的操作。
+<strong>Options</strong>
+自动执行action，不中断。</p>
+
+<h3 id="符号断点">符号断点</h3>
+
+<p><img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/20190321162159.png?token=ANanyjTfR8eUG_3EpIkHX-mHMnGbL-E-ks5ck0nowA%3D%3D" alt="" /></p>
+
+<p>他可以中断某个方法的调用，可谓是异常强大，在断点导航器界面，点击＋号，选择Add Symbolic Breakpoint选项。</p>
+
+<p><strong>Symbol</strong>
+他用来设置当前断点作用域所能识别的方法，这里面既可以是自定义的方法，也可以是系统的API方法。（注意必须表明是类方法还是成员方法）</p>
+
+<p><strong>Module</strong>
+用来限制满足符号的方法，编译器将只会在断点满足这个模组的符号的时候才回暂停。</p>
+
+<p>设定一个场景，你想知道对任何controller调用viewdidload方法。那么我们设定断点-[uiviewcontroller viewdidload]
+<img src="https://raw.githubusercontent.com/Z-figaro/picBed/master/image/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-03-21%20%E4%B8%8B%E5%8D%884.27.09.png?token=ANanygjOO8xPaVVOynZ69RXCrF3-80JVks5ck0vcwA%3D%3D" alt="" /></p>
+
+<p>然后系统会显示所有使用该方法的地方加上断点。</p>
+
+<p>这样如果换成你自己写的方法，那么你可以很轻松的找到使用了该方法的地方；都会停顿。如此排查一些公共组件，或者陌生的方法会非常轻松。</p>
+
+<h2 id="opengl-es-error-breakpoint">OpenGL ES Error Breakpoint</h2>
+
+<p>这个是调试OpenGL ES的断点调试，个人没用到过。</p>
+
+<h2 id="constraint-error">constraint error</h2>
+
+<p>这个是约束错误断点调试，凡是出现约束错误就会执行这个。</p>
+
+<h2 id="总结">总结：</h2>
+
+<p>各种xcode的调试技巧</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Flutter基础</title>
+			<link>https://z-figaro.github.io/posts/flutter%E5%9F%BA%E7%A1%80/</link>
+			<pubDate>Thu, 07 Mar 2019 10:51:14 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/flutter%E5%9F%BA%E7%A1%80/</guid>
+			<description>Flutter是什么？ Flutter是Google一个新的用于构建跨平台的手机App的SDK。写一份代码，在Android 和iOS平台上都可</description>
+			<content type="html"><![CDATA[
+
+<h1 id="flutter是什么">Flutter是什么？</h1>
+
+<p>Flutter是Google一个新的用于构建跨平台的手机App的SDK。写一份代码，在Android 和iOS平台上都可以运行。</p>
+
+<h2 id="flutter安装">Flutter安装</h2>
+
+<p>因为我是使用的mac，所以用mac演示</p>
+
+<p>这里是<a href="https://flutter.dev/docs/get-started/install/macos" target="_blank">官方链接</a>，演示了flutter的安装流程，中间有点小坑；我重新走一遍。</p>
+
+<p>1.下载Flutter SDK的最新稳定版本，<a href="https://flutter.dev/docs/development/tools/sdk/archive" target="_blank">地址</a></p>
+
+<p>2.在你的finder选择你想把Flutter工具放的位置，这点和golang要设置gopath非常像。
+比如我喜欢放在文稿里：</p>
+
+<pre><code>cd /Users/figaro/Documents/flutter
+unzip ~/Downloads/flutter_macos_v1.2.1-stable.zip
+</code></pre>
+
+<p>3.将工具添加到路径：</p>
+
+<pre><code>export PATH=&quot;$PATH:`pwd`/flutter/bin&quot;
+</code></pre>
+
+<p>这个是临时性方案，这样做只能在当前命令行窗口执行。如果要永久性的话，走下面流程：
+3.1 终端进入当前用户的home目录</p>
+
+<pre><code>cd ~
+</code></pre>
+
+<p>3.2 创建或者打开profile文件</p>
+
+<pre><code>创建
+touch .bash_profile 
+打开编辑
+open -e .bash_profile 
+</code></pre>
+
+<p>编辑完成关闭就保存修改</p>
+
+<p>3.3 更新配置的环境变量</p>
+
+<pre><code>source .bash_profile
+</code></pre>
+
+<p>3.4 检查</p>
+
+<pre><code>echo $PATH
+</code></pre>
+
+<p>4.检查是否需要依赖完成设置</p>
+
+<pre><code>flutter doctor
+</code></pre>
+
+<p>仔细完成提示的解决方案就好：</p>
+
+<pre><code>[!] iOS toolchain - develop for iOS devices
+    ✗ Xcode installation is incomplete; a full installation is necessary for iOS
+      development.
+      Download at: https://developer.apple.com/xcode/download/
+      Or install Xcode via the App Store.
+      Once installed, run:
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+    ✗ libimobiledevice and ideviceinstaller are not installed. To install with
+      Brew, run:
+        brew update
+        brew install --HEAD usbmuxd
+        brew link usbmuxd
+        brew install --HEAD libimobiledevice
+        brew install ideviceinstaller
+    ✗ ios-deploy not installed. To install:
+        brew install ios-deploy
+[!] Android Studio (not installed)
+[!] Connected device
+    ! No devices available
+
+! Doctor found issues in 4 categories.
+</code></pre>
+
+<p>4.1 出现错误解决方案
+在这一步：brew install &ndash;HEAD libimobiledevice 出现错误如下：</p>
+
+<pre><code>Error: An unexpected error occurred during the `brew link` step
+The formula built, but is not symlinked into /usr/local
+Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+</code></pre>
+
+<p>解决方法：</p>
+
+<pre><code> sudo mkdir /usr/local/Frameworks
+ sudo chown $(whoami):admin /usr/local/Frameworks
+</code></pre>
+
+<p>手机创建目录，然后赋权。可以使用brew cleanup清理废弃文件。</p>
+
+<p>5.xcode配置</p>
+
+<p>xcode9.0以上版本确定有了之后，执行</p>
+
+<pre><code> sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+</code></pre>
+
+<p>确保通过打开过一次xcode，然后执行</p>
+
+<pre><code>sudo xcodebuild -license
+</code></pre>
+
+<p>读完以后按空格，出现以下选择</p>
+
+<p>填写agree</p>
+
+<pre><code>By typing 'agree' you are agreeing to the terms of the software license agreements. Type 'print' to print them or anything else to cancel, [agree, print, cancel] agree
+</code></pre>
+
+<p>这样xcode的协议就签署完成。</p>
+
+<p>6.设置iOS模拟器</p>
+
+<p>6.1 打开模拟器</p>
+
+<pre><code> open -a Simulator
+</code></pre>
+
+<p>6.2 配置或者不需要修改</p>
+
+<p>通过检查模拟器的硬件&gt;设备菜单中的设置，确保您的模拟器使用的是64位设备（iPhone 5s或更高版本）。
+根据您的开发机器的屏幕尺寸，模拟的高屏密度iOS设备可能会溢出您的屏幕。在模拟器的“ 窗口”&gt;“比例”菜单下设置设备比例。</p>
+
+<p>7 创建并运行一个简单的flutter app</p>
+
+<p>7.1 命令行创建一个新的flutter app</p>
+
+<pre><code>flutter create my_app
+</code></pre>
+
+<p>7.2 进入此目录</p>
+
+<pre><code>cd my_app
+</code></pre>
+
+<p>7.3 要在模拟器中启动应用程序，请确保模拟器<strong>正在运行</strong>并输入：</p>
+
+<pre><code>flutter run
+</code></pre>
+
+<p>8 部署到iOS设备</p>
+
+<p>要将Flutter应用程序部署到物理iOS设备，您需要一些其他工具和Apple帐户。您还需要在Xcode中设置物理设备部署。</p>
+
+<p>8.1 确保homebrew 是最新的</p>
+
+<pre><code> brew update
+</code></pre>
+
+<p>8.2 通过运行以下命令，安装用于将Flutter应用程序部署到iOS设备的工具</p>
+
+<pre><code> brew install --HEAD usbmuxd
+ brew link usbmuxd
+ brew install --HEAD libimobiledevice
+ brew install ideviceinstaller ios-deploy cocoapods
+ pod setup
+</code></pre>
+
+<p>iOS的部分基本到这里，如果只是能在apple上使用还说什么跨平台，我们接着设置安卓的部分。</p>
+
+<p>9 android设置</p>
+
+<p>9.1 下载并安装Android studio，<a href="https://developer.android.com/studio" target="_blank">地址</a></p>
+
+<p>9.2 启动Android Studio，然后浏览“Android Studio安装向导”。这将安装最新的Android SDK，Android SDK Platform-Tools和Android SDK Build-Tools，这些都是Flutter在开发Android时所需要的</p>
+
+<p>9.3 设置安卓模拟器</p>
+
+<p>TODO：搞定模拟器</p>
+
+<p>9.4 设置安卓设备</p>
+
+<p>因为我没有安卓设备，我抄的官网的；虽然我很多都是抄的官网的。</p>
+
+<p>要准备在Android设备上运行和测试Flutter应用，您需要一台运行Android 4.1（API级别16）或更高版本的Android设备。</p>
+
+<p>在您的设备上启用开发人员选项和USB调试。Android文档中提供了详细说明。
+仅限Windows：安装Google USB驱动程序
+使用USB线将手机插入计算机。如果您的设备出现提示，请授权您的计算机访问您的设备。
+在终端中，运行flutter devices命令以验证Flutter是否识别您连接的Android设备。
+默认情况下，Flutter使用您的adb工具所基于的Android SDK版本。如果您希望Flutter使用Android SDK的其他安装，则必须将 ANDROID_HOME环境变量设置为该安装目录。</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>超级账本</title>
+			<link>https://z-figaro.github.io/posts/%E8%B6%85%E7%BA%A7%E8%B4%A6%E6%9C%AC/</link>
+			<pubDate>Tue, 05 Mar 2019 09:57:49 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/%E8%B6%85%E7%BA%A7%E8%B4%A6%E6%9C%AC/</guid>
+			<description>Hyperledge Fabric Hyperledger Fabric 是什么？ 它是一个区块链底层平台，提供分布式账本解决方案的平台。 2015年，linux基金会启动了hyperledger项目，目标是发</description>
+			<content type="html"><![CDATA[
+
+<h1 id="hyperledge-fabric">Hyperledge Fabric</h1>
+
+<h2 id="hyperledger-fabric-是什么">Hyperledger Fabric 是什么？</h2>
+
+<p>它是一个区块链底层平台，提供分布式账本解决方案的平台。</p>
+
+<p>2015年，linux基金会启动了hyperledger项目，目标是发展跨行业的区块链技术。fabric是Hyperledger中的一个区块链项目。和其他区块链系统相同在于，一样包含一个账本，使用智能合约并且是一个通过所有参与者管理交易的系统，不同点在于私有和许可。fabric通过Membership Service Provider（MSP）来登记所有的成员，通过建立channel来区分不同参与者的账本。</p>
+
+<p>fabric是一个非常商业性质的区块链平台，不能支撑过多的节点。并且对参与者比较有要求。</p>
+
+<h2 id="fabric的模型">fabric的模型</h2>
+
+<p>Assets资产 - 资产定义可以通过网络交换几乎任何具有货币价值的东西，从整个食品到古董车到货币期货。</p>
+
+<p>Chaincode - Chaincode执行与事务排序分开，限制了跨节点类型所需的信任和验证级别，并优化了网络可扩展性和性能。</p>
+
+<p>Ledger Features分类帐功能 - 不可变的共享分类帐为每个通道编码整个事务历史记录，并包括类似SQL的查询功能，以便进行有效的审计和争议解决。</p>
+
+<p>Privacy隐私 - 渠道和私人数据收集实现了私人和机密的多边交易，这些交易通常是在共同网络上交换资产的竞争企业和受监管行业所要求的。</p>
+
+<p>Security &amp; Membership Services安全和会员服务 - 允许的会员资格提供可信的区块链网络，参与者知道所有交易都可以由授权的监管机构和审计员检测和跟踪。</p>
+
+<p>Consensus共识 - 达成共识的独特方法可实现企业所需的灵活性和可扩展性。</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>区块链中的联盟链</title>
+			<link>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</link>
+			<pubDate>Wed, 19 Dec 2018 15:41:38 +0800</pubDate>
+			
+			<guid>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</guid>
+			<description>联盟链是： 1.公共区块链（Public blockchains） 公共区块链是指全世界任何人都可读取的、任何人都能发送交易且交易能获得有效确认的</description>
+			<content type="html"><![CDATA[
+
+<h2 id="联盟链是">联盟链是：</h2>
+
+<p>1.公共区块链（Public blockchains）</p>
+
+<blockquote>
+<p>公共区块链是指全世界任何人都可读取的、任何人都能发送交易且交易能获得有效确认的、任何人都能参与其中共识过程的区块链——共识过程决定哪个区块可被添加到区块链中和明确当前状态。作为中心化或者准中心化信任的替代物，公共区块链的安全由“加密数字经济”维护——“加密数字经济”采取工作量证明机制或权益证明机制等方式，将经济奖励和加密数字验证结合了起来，并遵循着一般原则：每个人从中可获得的经济奖励，与对共识过程作出的贡献成正比。这些区块链通常被认为是“完全去中心化”的。</p>
+</blockquote>
+
+<p>2.联盟区块链：（Consortium blockchains）</p>
+
+<blockquote>
+<p>联盟区块链是指其共识过程受到预选节点控制的区块链；例如，不妨想象一个有15个金融机构组成的共同体，每个机构都运行着一个节点，而且为了使每个区块生效需要获得其中10个机构的确认（2/3确认）。区块链或许允许每个人都可读取，或者只受限于参与者，或走混合型路线，例如区块的根哈希及其API（应用程序接口）对外公开，API可允许外界用来作有限次数的查询和获取区块链状态的信息。这些区块链可视为“部分去中心化”。</p>
+</blockquote>
+
+<p>3.完全私有区块链（Fully private blockchains）</p>
+
+<blockquote>
+<p>完全私有的区块链是指其写入权限仅在一个组织手里的区块链。读取权限或者对外开放，或者被任意程度地进行了限制。相关的应用囊括数据库管理、审计、甚至一个公司，尽管在有些情况下希望它能有公共的可审计性，但在很多的情形下，公共的可读性并非是必须的。</p>
+</blockquote>
+
+<p>——Vitalik Buterin（以太坊创始人）谈Private vs Public</p>
+
+<p>以上是V神理解的区块链细分区别，因为工作的原因，我三种链都接触了。首先，任何流程化和需要审核和信任的过程都可以用区块链技术；所以未来区块链技术会是一份像今天开发web页面一样的基本技术。未来必定会有浩如星海的私链，错综复杂的联盟链；加上部分地区，国家基本的共链。这些链把我们所有人的生活都数字化。</p>
+
+<p>联盟链未来一定是企业标配，现在还做不到，只是技术和成本门槛。Linux基金会其中的开源项目fabric，提供了开发基础框架；如果未来能够突破100个节点这样的限制条件，潜力无限。</p>
+
+<p>联盟链一定会经历根据业务特点，形成很多不能兼容和效率低下的问题。最好的解决办法就是开发一条侧链来辅助各公司甚至各个业务层来完成具体的工作。这样会成为一个轻客户端的彻底解决方案，不过开发侧链又会是一个专门的部分，人力物力会和中心化的微服务中台比较上；会有一部分的提高。但是对于有一定规模的公司，这就不是一个问题。</p>
+
+<p><img src="https://lh3.googleusercontent.com/-xmnkNzfEfv4/XBr5INjeakI/AAAAAAAAB6Y/QiqIcoGfi28MqjKLsIamtS9cob93EEWRgCHMYCw/I/%255BUNSET%255D" alt="屏幕快照 2018-12-20 上午10.03.24" /></p>
+
+<h2 id="联盟链和多链架构的价值">联盟链和多链架构的价值</h2>
+
+<ul>
+<li>协作灵活</li>
+<li>可编程资产打通联盟链条</li>
+<li>利益分配公平公正</li>
+</ul>
+
+<p>所有的价值，其实都是根据业务场景和需求来定义的。所有伟大的创造，都是根据这样的方式来演进。</p>
+
+<p>基金链：Lp，Gp，Cp这三个主要角色，甚至加上vc，监管方，银行。这些所有是否都应该用去中心的技术方案呢？</p>
+
+<p>联盟链一定是先线下共识达成之后，才能够上链。</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Python基础</title>
@@ -1143,478 +2231,6 @@ errorMsg is:
     dividee: 100
     divider: 0
 </code></pre>]]></content>
-		</item>
-		
-		<item>
-			<title>IPFS基础</title>
-			<link>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</link>
-			<pubDate>Wed, 19 Dec 2018 15:37:53 +0800</pubDate>
-			
-			<guid>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</guid>
-			<description>&lt;h1 id=&#34;ipfs是什么&#34;&gt;IPFS是什么：&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas
-from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bit-
-torrent swarm, exchanging git objects. IPFS provides an interface as simple
-as the HTTP web, but with permanence built in. You can also mount the world
-at /ipfs.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。&lt;/p&gt;</description>
-			<content type="html"><![CDATA[<h1 id="ipfs是什么">IPFS是什么：</h1>
-
-<pre><code>IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas
-from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bit-
-torrent swarm, exchanging git objects. IPFS provides an interface as simple
-as the HTTP web, but with permanence built in. You can also mount the world
-at /ipfs.
-</code></pre>
-
-<p>这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。</p>
-
-<h2 id="ipfs怎么搭建一个去中心网络">IPFS怎么搭建一个去中心网络</h2>
-
-<p><a href="https://www.jianshu.com/p/48a2739bade2" target="_blank">https://www.jianshu.com/p/48a2739bade2</a>
-这里把基本使用说的很详细，我可能会使用一部分，不过我会主要说明技术部分。</p>
-
-<p><img src="https://lh3.googleusercontent.com/-s9WMbI9Lyjo/W3z8v1XUyZI/AAAAAAAAB4w/L9zacPObl94YVE5f3GniydkCbSUohTnUQCHMYCw/I/p2p-ipfs.jpg" alt="p2p-ipfs" /></p>
-
-<h3 id="ipfs是一个p2p网络-先来看看bittorrent的p2p网络是如何工作的">IPFS是一个p2p网络，先来看看BitTorrent的p2p网络是如何工作的？</h3>
-
-<p>想要bt下载一个文件，首先你需要一个种子文件torrent，种子文件包含至少一个 Tracker（一台服务器地址）信息和文件的分割记录信息。BT软件解析种子文件torrent，从里面找出来tracker，告诉tracker我要下载这个文件。tracker同时返回给你现在其它正在下载的节点信息，这个时候你的节点就正式加入了p2p下载网络，根据tracker返回的信息直接跟其它节点建立联系，开始数据传输。</p>
-
-<p>这种情况下Tracker成为了沟通p2p网络的关键一环，如果tracker服务器全部关闭的话，p2p网络就被关闭了。</p>
-
-<p>那么是不是说如果没有了Tracker，p2p就不能实现了？显然不是的，后来有了DHT（分布式哈希表），DHT技术的出现使得没有tracker也能进行p2p网络下载，用过电驴的读者应该都不陌生，电驴里面有一个选项，可以允许选择KAD（DHT的一种）网络进行搜索。这样一来p2p网络的适应性更强了，可以大大减轻tracker的负担。</p>
-
-<p>以上就是传统的P2P软件大概工作方式。
-IPFS的p2p网络使用的是DHT技术</p>
-
-<h3 id="什么是dht-distributed-hash-tables">什么是DHT ( Distributed Hash Tables ) ?</h3>
-
-<p>DHT是一个分布式系统, 它提供了一个类似哈希表一样的查询服务: 键值对存储在DHT中, 任何参与的节点都可以有效的检索给定键对应的值. 键值对的映射由网络中所有的节点维护, 每个节点负责一小部分路由和数据存储. 这样即使有节点加入或者离开, 对整个网络的影响都很小, 于是DHT可以扩展到非常庞大的节点(上千万)。</p>
-
-<p>DHT广泛应用于各种点对点系统, 用来存储节点的元数据。比如：BTC系统使用 MainlineDHT来维护节点。</p>
-
-<p>DHT具有以下性质:</p>
-
-<p>离散型(Autonomy and decentralization): 构成系统的节点之间都是对等的, 没有中央控制机制进行协调
-伸缩性(Scalability): 不论系统有多少节点, 都要求高效工作
-容错性(Fault tolerance): 不断有节点加入和离开, 不会影响整个系统的工作</p>
-
-<h3 id="简单介绍一席跟ipfs有关的三种dht技术">简单介绍一席跟IPFS有关的三种DHT技术</h3>
-
-<h4 id="kademlia-dht">Kademlia DHT</h4>
-
-<p>高效查询：查询的平均复杂度是 log2(n)，例如：10,000,000个节点只需要20次查询
-低开销：优化了发往其它节点的控制消息的数量
-可以抵御各种攻击
-广泛应用于各种点对点系统，包括：Guntella和BitTorrent，可以构建超过2千万个节点的网络</p>
-
-<h4 id="coral-dsht">Coral DSHT</h4>
-
-<p>Coral继承了Kademlia并且做了一些改造 ( 它认为直接在DHT上存储数据是浪费存储和带宽)</p>
-
-<h4 id="s-kademlia-dht">S/Kademlia DHT</h4>
-
-<p>S/Kademlia DHT同样是继承了Kademlia，并且做了一些改进，系统可以防止恶意攻击，例如女巫攻击。</p>
-
-<h3 id="ipfs的路由系统">IPFS的路由系统</h3>
-
-<p>ipfs系统的节点查找有两个需求：</p>
-
-<p>第一找到其他节点地址
-第二找到存储有特定数据的节点</p>
-
-<p>IPFS综合了S/Kademlia 、Coral和Mainline技术（能折腾吧，不过这种对技术的追求精神值得我们给ipfs团队鲜花和鼓掌）。Kademlia协议的工作方式比较复杂, 有兴趣了解的可以单独去查询一下, 本文不在进行更深入的讨论. KAD可以很高效进行路由查询服务。</p>
-
-<p>IPFS DHT的数据存储是根据数据的大小进行的：</p>
-
-<p>小于1KB的数据直接存储到DHT上面
-大于1KB的数据在DHT中存储的是节点ID</p>
-
-<h3 id="节点加入">节点加入</h3>
-
-<p>IPFS是基于DHT技术的，所以在IPFS网络里面是没有tracker存在的。那么一个新的节点创建后是如何加入网络的呢？</p>
-
-<p>新创建的节点必须知道至少一个已经在网络上的节点地址，连上那个节点，就可以加入网络了，所以ipfs系统提供了bootstrap命令来完成这个工作（通常情况不需要自己来做这样的操作，除非有一些特殊需求，例如：指定自己比较近的启动节点，搭建IPFS私有网络等）</p>
-
-<pre><code>ipfs bootstrap list 列出来启动节点
-ipfs bootstrap add [&lt;peer&gt;] 添加启动节点
-ipfs bootstrap rm [&lt;peer&gt;] 删除启动节点
-</code></pre>]]></content>
-		</item>
-		
-		<item>
-			<title>Sublime3各种技巧</title>
-			<link>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</link>
-			<pubDate>Wed, 19 Dec 2018 15:37:24 +0800</pubDate>
-			
-			<guid>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</guid>
-			<description>&lt;h1 id=&#34;代码片段&#34;&gt;代码片段&lt;/h1&gt;
-
-&lt;p&gt;我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。&lt;/p&gt;</description>
-			<content type="html"><![CDATA[<h1 id="代码片段">代码片段</h1>
-
-<p>我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。</p>
-
-<p>具体的使用办法：</p>
-
-<p>按照如下顺序，点击添加代码片段：</p>
-
-<p>Tools &mdash; Developer &mdash; new snippet</p>
-
-<pre><code>&lt;snippet&gt;
-	&lt;content&gt;&lt;![CDATA[
-${1:this}
-]]&gt;&lt;/content&gt;
-	&lt;!-- Optional: 这里中间添加触发片段的关键词 --&gt;
-	&lt;tabTrigger&gt;&lt;/tabTrigger&gt;
-	&lt;!-- Optional: 这里是在哪个语言区域生效 --&gt;
-	&lt;scope&gt;source.go&lt;/scope&gt;
-	&lt;!-- Optional: 对这个片段的描述 --&gt;
-	&lt;description&gt;&lt;/description&gt;
-
-&lt;/snippet&gt;
-
-</code></pre>
-
-<p><strong>重点：</strong>
-* 保存的代码片段文件，后缀：.sublime-snippet
-like this:
-<code>printSlice.sublime-snippet</code></p>]]></content>
-		</item>
-		
-		<item>
-			<title>Gitbook使用总结</title>
-			<link>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
-			<pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
-			
-			<guid>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
-			<description>&lt;p&gt;本文选自《Markdown 实用指南》 作者：毕小烦&lt;/p&gt;
-
-&lt;p&gt;GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。&lt;/p&gt;
-
-&lt;p&gt;使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。&lt;/p&gt;
-
-&lt;p&gt;除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。&lt;/p&gt;
-
-&lt;p&gt;对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。&lt;/p&gt;
-
-&lt;p&gt;可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。&lt;/p&gt;
-
-&lt;p&gt;GitBook 是开源的，地址：&lt;a href=&#34;https://github.com/GitbookIO/gitbook&#34; target=&#34;_blank&#34;&gt;https://github.com/GitbookIO/gitbook&lt;/a&gt;&lt;/p&gt;</description>
-			<content type="html"><![CDATA[<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
-
-<p>GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。</p>
-
-<p>使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。</p>
-
-<p>除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。</p>
-
-<p>对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。</p>
-
-<p>可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。</p>
-
-<p>GitBook 是开源的，地址：<a href="https://github.com/GitbookIO/gitbook" target="_blank">https://github.com/GitbookIO/gitbook</a></p>
-
-<p>GitBook 的功能：</p>
-
-<p>支持 Markdown 或 AsciiDoc 语法
-可导出静态站点或电子书（PDF、epub、mobi）
-支持多语言
-可设置封面
-支持变量、模板和模板继承
-有丰富的插件
-GitBook 的工具组合：</p>
-
-<p>Node.js：为了使用 npm 安装 GitBook，一定要先安装 Node.js。
-GitBook 命令：基于 Node.js 开发的命令行工具，用于创建和管理电子书。
-Markdown：GitBook 使用 Markdown 来写作，作者再也不用担心排版了。
-Git：GitBook 使用 Git 管理写作内容，方便多人协作和版本管理。
-Github/Gitlab：跟代码一样，写作的内容可以托管在 Github 或 Gitlab 中。
-gitbook.com：用于在线编写、发布和托管电子书的网站。
-GitBook 的使用场景：</p>
-
-<p>搭建公司内部的文档平台，用于公司内部的资料共享。
-发表开源的电子书，用于在互联网上共享自己的知识，普惠大众。
-GitBook 环境配置
-开始之前我们需要先安装：</p>
-
-<p>nodejs
-gitbook
-安装 Node.js
-因为 GitBook 是使用 Node.js 开发的，需要通过 Node.js 包管理工具 NPM 安装，所以在开始之前要先把 Nodejs 安装好。</p>
-
-<p>Node.js 下载地址：<a href="https://nodejs.org/zh-cn/" target="_blank">https://nodejs.org/zh-cn/</a></p>
-
-<p>NPM（node package manager），通常称为 node 包管理器。使用 NPM 可以对 node 包进行安装、卸载、更新、查看、搜索、发布等操作。</p>
-
-<p>安装完 Node.js，NPM 就可以直接用了。</p>
-
-<p>1.安装 GitBook
-使用 NPM 安装 GitBook 的命令行工具：</p>
-
-<p><code>$ sudo npm install gitbook-cli -g</code></p>
-
-<p>2.安装完成后查看 GitBook 的版本：</p>
-
-<pre><code>$ gitbook --version
-CLI version: 2.3.0
-GitBook version: 3.2.2
-</code></pre>
-
-<p>3.更新 GitBook命令：</p>
-
-<pre><code>$ npm update gitbook-cli -g
-</code></pre>
-
-<p>4.卸载 GitBook 命令：</p>
-
-<pre><code>$ sudo npm uninstall gitbook-cli -g
-</code></pre>
-
-<p>注意：</p>
-
-<p>本例中使用的是全局安装 GitBook 命令，还有一种安装方式是本地安装，两种方式有什么不同呢？</p>
-
-<p>本地安装：安装包会被下载到当前所在目录，因此只能在当前目录下使用。
-全局安装：安装包会被下载到到特定的系统目录下，安装包能够在所有目录下使用。
-例如，查看 macOS 下全局安装被安装到了哪里？</p>
-
-<pre><code>$ which gitbook
-/usr/local/bin/gitbook
-</code></pre>
-
-<p>GitBook 被安装到了 /usr/local/bin/ 目录下，因此可以全局使用。</p>
-
-<p>快速开始 GitBook
-初始化 GitBook</p>
-
-<h1 id="创建-mygitbook-文件夹-并切换到这个文件夹下面">创建 mygitbook 文件夹，并切换到这个文件夹下面</h1>
-
-<pre><code>~$ mkdir mygitbook &amp;&amp; cd mygitbook
-</code></pre>
-
-<h1 id="初始化-gitbook-工作目录-创建必要的文件">初始化 gitbook 工作目录，创建必要的文件</h1>
-
-<pre><code>~$ gitbook init
-warn: no summary file in this book
-info: create README.md
-info: create SUMMARY.md
-info: initialization is finished
-</code></pre>
-
-<p>然后会初始化 GitBook 目录，创建两个 md 格式的文件 README.md 和 SUMMARY.md</p>
-
-<p>README.md - 项目的介绍都写在这个文件里。
-SUMMARY.md - GitBook 的目录结构在这里配置。</p>
-
-<p>定义目录结构
-两种方法</p>
-
-<p>在 SUMMARY.md 文件中定义目录结构有两种方法。</p>
-
-<p>方法 ➊. 先定义好目录结构，通过 gitbook init 自动生成目录结构对应的文件夹和 Markdown 文件。</p>
-
-<p>方法 ➋. 先创建好文件夹和 Markdown 文件再来编辑目录结构。</p>
-
-<p>SUMMARY.md</p>
-
-<p>SUMMARY.md 的目录结构长什么样？ 看下面：</p>
-
-<h1 id="summary">Summary</h1>
-
-<ul>
-<li><a href="README.md" target="_blank">项目简介</a></li>
-<li><a href="docs/快速开始.md" target="_blank">快速开始</a>
-
-<ul>
-<li><a href="docs/环境搭建.md" target="_blank">环境搭建</a></li>
-<li><a href="docs/简单使用.md" target="_blank">简单使用</a></li>
-</ul></li>
-<li><a href="docs/深入学习" target="_blank">学入学习</a>
-这个目录建好以后在根目录下执行命令：</li>
-</ul>
-
-<pre><code>~$ gitbook init
-</code></pre>
-
-<p>那些没有的目录和文件都会被创建：</p>
-
-<p>info: create docs/快速开始.md
-info: create docs/环境搭建.md
-info: create docs/简单使用.md
-info: create docs/深入学习.md
-info: create SUMMARY.md
-info: initialization is finished
-注意： gitbook init 只支持生成两级目录</p>
-
-<p>启动服务
-在根目录执行命令：</p>
-
-<pre><code>~$ gitbook serve
-</code></pre>
-
-<p>结果：</p>
-
-<pre><code>
-</code></pre>
-<div class="highlight"><pre class="chroma"><code class="language-Live reload server started on port: 35729" data-lang="Live reload server started on port: 35729">Press CTRL+C to quit ...
-
-info: 7 plugins are installed
-info: loading plugin &#34;livereload&#34;... OK
-info: loading plugin &#34;highlight&#34;... OK
-info: loading plugin &#34;search&#34;... OK
-info: loading plugin &#34;lunr&#34;... OK
-info: loading plugin &#34;sharing&#34;... OK
-info: loading plugin &#34;fontsettings&#34;... OK
-info: loading plugin &#34;theme-default&#34;... OK
-info: found 5 pages
-info: found 0 asset files
-info: &gt;&gt; generation finished with success in 1.9s !
-
-Starting server ...
-Serving book on http://localhost:4000 # 注意浏览地址</code></pre></div>
-<p>执行 gitbook serve命令后，会先编译书籍gitbook build，如果没有问题会打开一个 Web 服务器，默认监听 4000 端口。如果编译有问题，会抛出错误信息。</p>
-
-<p>查看效果
-用浏览器打开 <a href="http://localhost:4000/" target="_blank">http://localhost:4000/</a> 或 <a href="http://127.0.0.1:4000/" target="_blank">http://127.0.0.1:4000/</a> 查看显示书籍的效果。</p>
-
-<p>如果想发给别人看，把 localhost 换成自己电脑的 IP 地址。</p>
-
-<p>Tips:</p>
-
-<p>Linux 上查看 IP 地址的命令是： ifconfig</p>
-
-<p>Windows 上查看 IP 地址的命令是：ipconfig</p>
-
-<p>本文选自《Markdown 实用指南》 作者：毕小烦</p>
-
-<p>作者：毕小烦
-链接：<a href="https://www.jianshu.com/p/430f4569d776" target="_blank">https://www.jianshu.com/p/430f4569d776</a></p>]]></content>
-		</item>
-		
-		<item>
-			<title>Hugo搭建网站</title>
-			<link>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</link>
-			<pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
-			
-			<guid>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</guid>
-			<description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 搭建流程： 以下是使用流程和心得，如果时间过久应该</description>
-			<content type="html"><![CDATA[
-
-<p>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。
-  <!-- more --></p>
-
-<h2 id="搭建流程">搭建流程：</h2>
-
-<p>以下是使用流程和心得，如果时间过久应该以<a href="https://gohugo.io/documentation/" target="_blank">官方文档</a>为准。</p>
-
-<h3 id="安装">安装：</h3>
-
-<pre><code>使用brew安装hugo
-</code></pre>
-
-<blockquote>
-<p>没有brew的话：</p>
-</blockquote>
-
-<pre><code>$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-
-<blockquote>
-<p>安装hugo</p>
-</blockquote>
-
-<pre><code>$ brew new Hugo
-</code></pre>
-
-<h3 id="hugo使用">hugo使用：</h3>
-
-<p>在你想存放网站的地方使用：</p>
-
-<pre><code>$ hugo new site mysite
-</code></pre>
-
-<p>进入路径</p>
-
-<pre><code>$ cd mysite
-</code></pre>
-
-<p>在该目录下面你可以看到这些文件</p>
-
-<pre><code>#blog
-#├── archetypes
-#│   └── default.md
-#├── config.toml
-#├── content
-#├── data
-#├── layouts
-#├── static
-#└── themes
-</code></pre>
-
-<p>其中最关键的是config.toml,这是网站的配置文件。</p>
-
-<ul>
-<li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
-<li>content：包括网站内容，全部使用markdown格式</li>
-<li>layouts：包括了网站的模版，决定内容如何呈现</li>
-<li>static：包括了css, js, fonts, media等，决定网站的外观</li>
-<li>themes: 网站主题文件</li>
-</ul>
-
-<p>你可以下载自己喜欢的主题，或者使用默认的。</p>
-
-<p>主题使用submodule来git clone 是最方便的；也是官方建议的。</p>
-
-<h3 id="安装主题">安装主题：</h3>
-
-<p>在<a href="https://themes.gohugo.io/" target="_blank">官方地址</a>下载主题有两种clone方式。</p>
-
-<p>可以直接cd到theme主题文件下</p>
-
-<pre><code>git clone https://github.com/olOwOlo/hugo-theme-even themes/even
-</code></pre>
-
-<p>也可以添加到git的submodule中，如果做travis自动部署，或者对主题做了修改。那么这是首选的方式。</p>
-
-<pre><code>git submodule add https://github.com/olOwOlo/hugo-theme-even.git themes/even
-</code></pre>
-
-<p>如果修改了主题，这个要根据每个主题文件不同的设置。有的需要在主题目录下重新build</p>
-
-<pre><code>cd themes/even &amp;&amp; npm i &amp;&amp; npm start
-</code></pre>
-
-<h3 id="页面设置和发布文章">页面设置和发布文章</h3>
-
-<p>如果你想根据主题设置网站page：</p>
-
-<pre><code>hugo new xxxx.md
-</code></pre>
-
-<p>如果你想生成新文章：</p>
-
-<pre><code>hugo new posts/my-first-post.md
-</code></pre>
-
-<h3 id="评论功能">评论功能：</h3>
-
-<p>可以参考<a href="https://zh4ui.net/post/2017-04-20-hugo-with-disqus/" target="_blank">这篇文章</a></p>
-
-<h3 id="github-page结合使用">github page结合使用</h3>
-
-<p>可以参考<a href="https://segmentfault.com/a/1190000012975914" target="_blank">这里</a>，了解基本部署和自动部署。</p>
-
-<p>如果需要手动部署：</p>
-
-<p>1.修改完文章之后修改draft状态为false，或者直接删除该行
-2.命令行使用hugo 生成新的public文件
-3.push 新的public文件到github
-4.等待一会就能看到了</p>
-]]></content>
 		</item>
 		
 	</channel>

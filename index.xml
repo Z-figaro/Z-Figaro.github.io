@@ -7,10 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Sat, 29 Dec 2018 14:25:38 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 16:55:07 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title> Attribute 实现系统代码提示</title>
+      <link>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</guid>
+      <description>资料放在最前面，方便同学查询。 官方文档 matt大神 attribute是GNU C特色之一,在iOS用的比较广泛.系统中有许多地方使用到. att</description>
+    </item>
+    
+    <item>
+      <title>Block使用详解</title>
+      <link>https://z-figaro.github.io/posts/block%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Tue, 02 Apr 2019 11:26:34 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/block%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</guid>
+      <description>Block本质 通过LLVM的编译器-rt子项目存储库中找到runtime下的Block源码 struct Block_layout { void *isa; int flags; int reserved; void (*invoke)(void *, ...); struct Block_descriptor *descriptor; /* Imported variables. */ }; 我们实现</description>
+    </item>
+    
+    <item>
+      <title>Xcode中如何使用断点</title>
+      <link>https://z-figaro.github.io/posts/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</link>
+      <pubDate>Thu, 21 Mar 2019 13:34:06 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</guid>
+      <description>断点调试 断点使用是我们开发提高效率，解决问题的不二法门；能够清楚的使用断点调试技巧，是基本技能。 edit breakpoint 编辑断点 reveal in breakpoint navigator 断点导航器 这就是我们的两</description>
+    </item>
+    
+    <item>
+      <title>Flutter基础</title>
+      <link>https://z-figaro.github.io/posts/flutter%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 07 Mar 2019 10:51:14 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/flutter%E5%9F%BA%E7%A1%80/</guid>
+      <description>Flutter是什么？ Flutter是Google一个新的用于构建跨平台的手机App的SDK。写一份代码，在Android 和iOS平台上都可</description>
+    </item>
+    
+    <item>
+      <title>超级账本</title>
+      <link>https://z-figaro.github.io/posts/%E8%B6%85%E7%BA%A7%E8%B4%A6%E6%9C%AC/</link>
+      <pubDate>Tue, 05 Mar 2019 09:57:49 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/%E8%B6%85%E7%BA%A7%E8%B4%A6%E6%9C%AC/</guid>
+      <description>Hyperledge Fabric Hyperledger Fabric 是什么？ 它是一个区块链底层平台，提供分布式账本解决方案的平台。 2015年，linux基金会启动了hyperledger项目，目标是发</description>
+    </item>
     
     <item>
       <title>String和strconv包</title>
@@ -19,6 +64,15 @@
       
       <guid>https://z-figaro.github.io/studynote-go/string%E5%92%8Cstrconv%E5%8C%85/</guid>
       <description>字符串是我们使用最多的部分，所以需要好好熟悉一下。其中strconv包主要是实现基本数据类型与字符串之间的转换，是每天都要用到的。所以要好好</description>
+    </item>
+    
+    <item>
+      <title>区块链中的联盟链</title>
+      <link>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</link>
+      <pubDate>Wed, 19 Dec 2018 15:41:38 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/posts/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</guid>
+      <description>联盟链是： 1.公共区块链（Public blockchains） 公共区块链是指全世界任何人都可读取的、任何人都能发送交易且交易能获得有效确认的</description>
     </item>
     
     <item>
@@ -50,83 +104,6 @@
 &lt;h2 id=&#34;区块链到底是什么&#34;&gt;区块链到底是什么？&lt;/h2&gt;
 
 &lt;p&gt;区块链技术设计之初是为了解决不需要任何机构，组织来背书，大家就可以对某件事，某个规则，某个事物的价值和意义达成一种共识；遵守就可以得到正反馈，不遵守又想得到正反馈的任何行为都被设计的这一套区块链技术所防止。这就是我理解的区块链技术。近代以来的伟大技术好像都是这样为了理想诞生的，git之父Linus Torvalds（同样也是linux之父，发现为什么叫linux了。）为了不想和别人一起上班，不想天天面对别人，所以发明了git来管理代码。。。。。任性啊。所以区块链技术不是为了发币，发币只是提供正反馈的一种抽象机制；毕竟数字最容易提现。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Go语言基础</title>
-      <link>https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Wed, 19 Dec 2018 15:38:14 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/posts/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</guid>
-      <description>&lt;p&gt;go 的所有基础知识，根据自己的情况，不定时添加。更深入的内容会单开文章来写。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>IPFS基础</title>
-      <link>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Wed, 19 Dec 2018 15:37:53 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/posts/ipfs%E5%9F%BA%E7%A1%80/</guid>
-      <description>&lt;h1 id=&#34;ipfs是什么&#34;&gt;IPFS是什么：&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas
-from Git, BitTorrent, Kademlia, SFS, and the Web. It is like a single bit-
-torrent swarm, exchanging git objects. IPFS provides an interface as simple
-as the HTTP web, but with permanence built in. You can also mount the world
-at /ipfs.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sublime3各种技巧</title>
-      <link>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Wed, 19 Dec 2018 15:37:24 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/posts/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</guid>
-      <description>&lt;h1 id=&#34;代码片段&#34;&gt;代码片段&lt;/h1&gt;
-
-&lt;p&gt;我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Gitbook使用总结</title>
-      <link>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/posts/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;p&gt;本文选自《Markdown 实用指南》 作者：毕小烦&lt;/p&gt;
-
-&lt;p&gt;GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。&lt;/p&gt;
-
-&lt;p&gt;使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。&lt;/p&gt;
-
-&lt;p&gt;除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。&lt;/p&gt;
-
-&lt;p&gt;对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。&lt;/p&gt;
-
-&lt;p&gt;可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。&lt;/p&gt;
-
-&lt;p&gt;GitBook 是开源的，地址：&lt;a href=&#34;https://github.com/GitbookIO/gitbook&#34; target=&#34;_blank&#34;&gt;https://github.com/GitbookIO/gitbook&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hugo搭建网站</title>
-      <link>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</link>
-      <pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/posts/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</guid>
-      <description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 搭建流程： 以下是使用流程和心得，如果时间过久应该</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://z-figaro.github.io/about-me/</link>
-      <pubDate>Tue, 18 Dec 2018 17:13:20 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/about-me/</guid>
-      <description>我现在从事区块链的金融业务。 邮箱： zpfigaro@gmail.com 地址： 四川省成都市</description>
     </item>
     
   </channel>

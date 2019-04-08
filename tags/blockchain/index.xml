@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Mon, 08 Apr 2019 13:17:53 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 13:33:16 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/tags/blockchain/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Ios</title>
-      <link>https://z-figaro.github.io/daily/ios/</link>
-      <pubDate>Mon, 08 Apr 2019 13:17:53 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/daily/ios/</guid>
-      <description># dt  adsfadfadf</description>
-    </item>
     
     <item>
       <title>Go基础——锁</title>
@@ -68,19 +59,19 @@
     
     <item>
       <title>区块链中的联盟链</title>
-      <link>https://z-figaro.github.io/daily/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</link>
+      <link>https://z-figaro.github.io/dailynote/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</link>
       <pubDate>Wed, 19 Dec 2018 15:41:38 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/daily/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</guid>
+      <guid>https://z-figaro.github.io/dailynote/%E5%8C%BA%E5%9D%97%E9%93%BE%E4%B8%AD%E7%9A%84%E8%81%94%E7%9B%9F%E9%93%BE/</guid>
       <description>联盟链是： 1.公共区块链（Public blockchains） 公共区块链是指全世界任何人都可读取的、任何人都能发送交易且交易能获得有效确认的</description>
     </item>
     
     <item>
       <title>区块链是什么？</title>
-      <link>https://z-figaro.github.io/daily/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <link>https://z-figaro.github.io/dailynote/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</link>
       <pubDate>Wed, 19 Dec 2018 15:38:42 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/daily/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <guid>https://z-figaro.github.io/dailynote/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
       <description>&lt;h1 id=&#34;区块链&#34;&gt;区块链&lt;/h1&gt;
 
 &lt;h2 id=&#34;区块链到底是什么&#34;&gt;区块链到底是什么？&lt;/h2&gt;
@@ -90,10 +81,10 @@
     
     <item>
       <title>IPFS基础</title>
-      <link>https://z-figaro.github.io/daily/ipfs%E5%9F%BA%E7%A1%80/</link>
+      <link>https://z-figaro.github.io/dailynote/ipfs%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Wed, 19 Dec 2018 15:37:53 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/daily/ipfs%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://z-figaro.github.io/dailynote/ipfs%E5%9F%BA%E7%A1%80/</guid>
       <description>&lt;h1 id=&#34;ipfs是什么&#34;&gt;IPFS是什么：&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;IPFS is a global, versioned, peer-to-peer filesystem. It combines good ideas

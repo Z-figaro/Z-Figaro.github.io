@@ -14,10 +14,10 @@
     
     <item>
       <title>Gitbook使用总结</title>
-      <link>https://z-figaro.github.io/daily/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <link>https://z-figaro.github.io/dailynote/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
       <pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/daily/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://z-figaro.github.io/dailynote/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;p&gt;本文选自《Markdown 实用指南》 作者：毕小烦&lt;/p&gt;
 
 &lt;p&gt;GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。&lt;/p&gt;

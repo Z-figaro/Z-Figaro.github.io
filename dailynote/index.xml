@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Thu, 07 Mar 2019 10:51:14 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Apr 2019 14:27:07 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/dailynote/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git子模块使用</title>
+      <link>https://z-figaro.github.io/dailynote/git%E5%AD%90%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 08 Apr 2019 14:27:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/git%E5%AD%90%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</guid>
+      <description>使用场景 我的blog是使用的hugo创建，其中的主题，我是直接网上找的。这个主题本身也是一个gh上的项目。我如何直接用git同时管理我们的B</description>
+    </item>
     
     <item>
       <title>Flutter基础</title>
@@ -118,15 +127,6 @@ at /ipfs.
 &lt;p&gt;可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。&lt;/p&gt;
 
 &lt;p&gt;GitBook 是开源的，地址：&lt;a href=&#34;https://github.com/GitbookIO/gitbook&#34; target=&#34;_blank&#34;&gt;https://github.com/GitbookIO/gitbook&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Hugo搭建网站</title>
-      <link>https://z-figaro.github.io/dailynote/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</link>
-      <pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/dailynote/hugo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</guid>
-      <description>我用了很多博客框架，最后还是选择了go语言开发的hugo。不管速度还是简单程度都完全不一样。 搭建流程： 以下是使用流程和心得，如果时间过久应该</description>
     </item>
     
   </channel>

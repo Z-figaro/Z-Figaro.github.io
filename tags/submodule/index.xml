@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Submodule on Figaro ZP</title>
+    <link>https://z-figaro.github.io/tags/submodule/</link>
+    <description>Recent content in Submodule on Figaro ZP</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>All rights by figaro zp.</copyright>
+    <lastBuildDate>Mon, 08 Apr 2019 14:27:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://z-figaro.github.io/tags/submodule/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git子模块使用</title>
+      <link>https://z-figaro.github.io/dailynote/git%E5%AD%90%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 08 Apr 2019 14:27:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/git%E5%AD%90%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/</guid>
+      <description>使用场景 我的blog是使用的hugo创建，其中的主题，我是直接网上找的。这个主题本身也是一个gh上的项目。我如何直接用git同时管理我们的B</description>
+    </item>
+    
+  </channel>
+</rss>

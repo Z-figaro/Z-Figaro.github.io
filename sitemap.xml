@@ -3,18 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://z-figaro.github.io/daily/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</loc>
-    <lastmod>2019-04-03T16:55:07+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://z-figaro.github.io/ios/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</loc>
     <lastmod>2019-04-03T16:55:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://z-figaro.github.io/daily/block%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</loc>
-    <lastmod>2019-04-02T11:26:34+08:00</lastmod>
   </url>
   
   <url>
@@ -23,18 +13,48 @@
   </url>
   
   <url>
-    <loc>https://z-figaro.github.io/daily/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</loc>
-    <lastmod>2019-03-21T13:34:06+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://z-figaro.github.io/ios/xcode%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%96%AD%E7%82%B9/</loc>
     <lastmod>2019-03-21T13:34:06+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E9%94%81/</loc>
+    <lastmod>2019-03-21T13:33:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80map/</loc>
+    <lastmod>2019-03-20T15:01:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <lastmod>2019-03-19T17:52:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</loc>
+    <lastmod>2019-03-19T11:20:16+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://z-figaro.github.io/daily/flutter%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2019-03-07T10:51:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</loc>
+    <lastmod>2019-03-06T16:07:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80-%E6%95%B0%E7%BB%84/</loc>
+    <lastmod>2019-03-05T10:03:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80-%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2019-03-05T10:01:17+08:00</lastmod>
   </url>
   
   <url>
@@ -55,11 +75,6 @@
   <url>
     <loc>https://z-figaro.github.io/daily/python%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2018-12-19T15:40:38+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://z-figaro.github.io/daily/arkit%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2018-12-19T15:40:19+08:00</lastmod>
   </url>
   
   <url>
@@ -120,7 +135,7 @@
   
   <url>
     <loc>https://z-figaro.github.io/tags/blockchain/</loc>
-    <lastmod>2018-12-19T15:41:38+08:00</lastmod>
+    <lastmod>2019-03-21T13:33:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,7 +146,7 @@
   
   <url>
     <loc>https://z-figaro.github.io/daily/</loc>
-    <lastmod>2019-04-03T16:55:07+08:00</lastmod>
+    <lastmod>2019-03-07T10:51:14+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -167,13 +182,13 @@
   
   <url>
     <loc>https://z-figaro.github.io/tags/golang/</loc>
-    <lastmod>2018-12-29T14:25:38+08:00</lastmod>
+    <lastmod>2019-03-21T13:33:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://z-figaro.github.io/golang/</loc>
-    <lastmod>2018-12-29T14:25:38+08:00</lastmod>
+    <lastmod>2019-03-21T13:33:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   

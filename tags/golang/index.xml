@@ -14,10 +14,10 @@
     
     <item>
       <title>String和strconv包</title>
-      <link>https://z-figaro.github.io/studynote-go/string%E5%92%8Cstrconv%E5%8C%85/</link>
+      <link>https://z-figaro.github.io/golang/string%E5%92%8Cstrconv%E5%8C%85/</link>
       <pubDate>Sat, 29 Dec 2018 14:25:38 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/studynote-go/string%E5%92%8Cstrconv%E5%8C%85/</guid>
+      <guid>https://z-figaro.github.io/golang/string%E5%92%8Cstrconv%E5%8C%85/</guid>
       <description>字符串是我们使用最多的部分，所以需要好好熟悉一下。其中strconv包主要是实现基本数据类型与字符串之间的转换，是每天都要用到的。所以要好好</description>
     </item>
     

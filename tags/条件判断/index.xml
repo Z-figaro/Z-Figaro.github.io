@@ -14,10 +14,10 @@
     
     <item>
       <title>“Python基础1:条件语句”</title>
-      <link>https://z-figaro.github.io/studynote-python/python%E5%9F%BA%E7%A1%801-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</link>
+      <link>https://z-figaro.github.io/python/python%E5%9F%BA%E7%A1%801-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</link>
       <pubDate>Wed, 25 Jul 2018 15:31:38 +0000</pubDate>
       
-      <guid>https://z-figaro.github.io/studynote-python/python%E5%9F%BA%E7%A1%801-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</guid>
+      <guid>https://z-figaro.github.io/python/python%E5%9F%BA%E7%A1%801-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</guid>
       <description>#pass if 1==1 : pass else : print (&amp;quot;error&amp;quot;) 如果某些条件下不想有任何操作，必须使用pass continue 中止当前循环 break 中止整个循环</description>
     </item>
     

@@ -14,10 +14,19 @@
     
     <item>
       <title> Attribute 实现系统代码提示</title>
-      <link>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</link>
+      <link>https://z-figaro.github.io/daily/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</link>
       <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/posts/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</guid>
+      <guid>https://z-figaro.github.io/daily/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</guid>
+      <description>资料放在最前面，方便同学查询。 官方文档 matt大神 attribute是GNU C特色之一,在iOS用的比较广泛.系统中有许多地方使用到. att</description>
+    </item>
+    
+    <item>
+      <title> Attribute 实现系统代码提示</title>
+      <link>https://z-figaro.github.io/ios/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</link>
+      <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/ios/-attribute-%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA/</guid>
       <description>资料放在最前面，方便同学查询。 官方文档 matt大神 attribute是GNU C特色之一,在iOS用的比较广泛.系统中有许多地方使用到. att</description>
     </item>
     

@@ -50,37 +50,37 @@
     
     <item>
       <title>Go基础——锁</title>
-      <link>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E9%94%81/</link>
+      <link>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E9%94%81/</link>
       <pubDate>Thu, 21 Mar 2019 13:33:16 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E9%94%81/</guid>
+      <guid>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E9%94%81/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go基础——Map</title>
-      <link>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80map/</link>
+      <link>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80map/</link>
       <pubDate>Wed, 20 Mar 2019 15:01:57 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80map/</guid>
+      <guid>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80map/</guid>
       <description>Map 在iOS中叫字典，就是key-value结构的数据 声明方式： var map1 map[k-type]v-type 声明不分配内存空间 map是无序的</description>
     </item>
     
     <item>
       <title>Go基础——字符串</title>
-      <link>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+      <link>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
       <pubDate>Tue, 19 Mar 2019 17:52:25 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
+      <guid>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
       <description>字符串 字符串本身是一个byte数组 go语言中的字符有两种类型： 1. uint8类型或者叫byte类型，代表ASCII码的一个字符 2. rune类型，</description>
     </item>
     
     <item>
       <title>Go基础——切片slice</title>
-      <link>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</link>
+      <link>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</link>
       <pubDate>Tue, 19 Mar 2019 11:20:16 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/golang/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</guid>
+      <guid>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</guid>
       <description>slice切片 切片是对数组的抽象。它的数据结构是： 切片从图中可以看出： 1. 指向数组的指针 2. 切片的长度 len 3. 切片的容量 cap 切片的声明 s := make([]byte,lense&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;) 例如： s:= make([]int,10)</description>
     </item>
     
@@ -95,10 +95,10 @@
     
     <item>
       <title>Golang中包和引用</title>
-      <link>https://z-figaro.github.io/golang/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</link>
+      <link>https://z-figaro.github.io/golangnote/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</link>
       <pubDate>Wed, 06 Mar 2019 16:07:44 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/golang/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
+      <guid>https://z-figaro.github.io/golangnote/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
       <description>在golang中，初次使用很容易对包和引用产生疑问，特此记录下来。 因为golang对文件引用的严格管理，但是对于项目结构又给与了很大的自由度</description>
     </item>
     

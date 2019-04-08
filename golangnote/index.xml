@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Figaro ZP</title>
-    <link>https://z-figaro.github.io/tags/golang/</link>
-    <description>Recent content in Golang on Figaro ZP</description>
+    <title>GolangNotes on Figaro ZP</title>
+    <link>https://z-figaro.github.io/golangnote/</link>
+    <description>Recent content in GolangNotes on Figaro ZP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Mon, 08 Apr 2019 14:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Mar 2019 13:33:16 +0800</lastBuildDate>
     
-	<atom:link href="https://z-figaro.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://z-figaro.github.io/golangnote/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Test好</title>
-      <link>https://z-figaro.github.io/dailynote/test%E5%A5%BD/</link>
-      <pubDate>Mon, 08 Apr 2019 14:00:00 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/dailynote/test%E5%A5%BD/</guid>
-      <description>测试页面 死活加载不出来页面</description>
-    </item>
     
     <item>
       <title>Go基础——锁</title>

@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Mon, 08 Apr 2019 14:27:07 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 15:52:51 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于996的思考</title>
+      <link>https://z-figaro.github.io/dailynote/%E5%85%B3%E4%BA%8E996%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sun, 14 Apr 2019 15:52:51 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/%E5%85%B3%E4%BA%8E996%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>资本的力量已经露出了爪牙，我们中国前20年的口号和标语完全作废；依法治国也变成了一场笑谈。 因为计划生育的错误国策，中国人口结构老龄化已经是摆</description>
+    </item>
+    
+    <item>
+      <title>未来</title>
+      <link>https://z-figaro.github.io/dailynote/%E6%9C%AA%E6%9D%A5/</link>
+      <pubDate>Fri, 12 Apr 2019 23:55:41 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/%E6%9C%AA%E6%9D%A5/</guid>
+      <description>认知的重塑，将会是现在这个时代的最紧迫的事情。今天，我们面对很多的新词汇，新行业；感觉到时代的变化的变化是如此的快。是因为我们在时代积累的错</description>
+    </item>
     
     <item>
       <title>Git子模块使用</title>
@@ -82,24 +100,6 @@
       
       <guid>https://z-figaro.github.io/golangnote/go%E5%9F%BA%E7%A1%80%E5%88%87%E7%89%87slice/</guid>
       <description>slice切片 切片是对数组的抽象。它的数据结构是： 切片从图中可以看出： 1. 指向数组的指针 2. 切片的长度 len 3. 切片的容量 cap 切片的声明 s := make([]byte,lense&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;) 例如： s:= make([]int,10)</description>
-    </item>
-    
-    <item>
-      <title>Flutter基础</title>
-      <link>https://z-figaro.github.io/dailynote/flutter%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Thu, 07 Mar 2019 10:51:14 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/dailynote/flutter%E5%9F%BA%E7%A1%80/</guid>
-      <description>Flutter是什么？ Flutter是Google一个新的用于构建跨平台的手机App的SDK。写一份代码，在Android 和iOS平台上都可</description>
-    </item>
-    
-    <item>
-      <title>Golang中包和引用</title>
-      <link>https://z-figaro.github.io/golangnote/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</link>
-      <pubDate>Wed, 06 Mar 2019 16:07:44 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/golangnote/golang%E4%B8%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8/</guid>
-      <description>在golang中，初次使用很容易对包和引用产生疑问，特此记录下来。 因为golang对文件引用的严格管理，但是对于项目结构又给与了很大的自由度</description>
     </item>
     
   </channel>

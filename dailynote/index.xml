@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Mon, 08 Apr 2019 14:27:07 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2019 15:52:51 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/dailynote/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于996的思考</title>
+      <link>https://z-figaro.github.io/dailynote/%E5%85%B3%E4%BA%8E996%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sun, 14 Apr 2019 15:52:51 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/%E5%85%B3%E4%BA%8E996%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>资本的力量已经露出了爪牙，我们中国前20年的口号和标语完全作废；依法治国也变成了一场笑谈。 因为计划生育的错误国策，中国人口结构老龄化已经是摆</description>
+    </item>
+    
+    <item>
+      <title>未来</title>
+      <link>https://z-figaro.github.io/dailynote/%E6%9C%AA%E6%9D%A5/</link>
+      <pubDate>Fri, 12 Apr 2019 23:55:41 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/dailynote/%E6%9C%AA%E6%9D%A5/</guid>
+      <description>认知的重塑，将会是现在这个时代的最紧迫的事情。今天，我们面对很多的新词汇，新行业；感觉到时代的变化的变化是如此的快。是因为我们在时代积累的错</description>
+    </item>
     
     <item>
       <title>Git子模块使用</title>
@@ -95,38 +113,6 @@ at /ipfs.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这是ipfs的原话，我的理解是ipfs是一个去中心化的网络系统。它吸取了git，sfs等8个先进有效的方法来管理整个文件系统。去中心化，靠协议和各种共识机制来约定行为是未来互联网的方向；因为这就和电子商务一样，最核心的是能进一步提高效率，节约大量的成本。所以这是大趋势，不可逆转。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sublime3各种技巧</title>
-      <link>https://z-figaro.github.io/dailynote/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Wed, 19 Dec 2018 15:37:24 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/dailynote/sublime3%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7/</guid>
-      <description>&lt;h1 id=&#34;代码片段&#34;&gt;代码片段&lt;/h1&gt;
-
-&lt;p&gt;我不管用哪个ide，最先找的就是快捷键和怎么插入自己定义的代码片段。因为只要不断的使用，打磨出来的有用的代码片段会极大的提高效率；甚至规范我们的代码。让别人和自己都能很轻松的理解。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Gitbook使用总结</title>
-      <link>https://z-figaro.github.io/dailynote/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/dailynote/gitbook%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
-      <description>&lt;p&gt;本文选自《Markdown 实用指南》 作者：毕小烦&lt;/p&gt;
-
-&lt;p&gt;GitBook 是一个基于 Node.js 开发的命令行工具，使用它可以很方便的管理电子书，GitBook 是目前最流行的开源书籍写作方案。&lt;/p&gt;
-
-&lt;p&gt;使用 GitBook 可以让创作者专注写作，自由的挥洒，不必太多的关心内容排版、发布和版本管理等问题。&lt;/p&gt;
-
-&lt;p&gt;除了通过 GitBook 命令行管理电子书外，还可以在线（gitbook.com）或者使用桌面编辑器 Gitbook Editor 来编写和管理电子书。&lt;/p&gt;
-
-&lt;p&gt;对于新手来说，我推荐使用 Gitbook Editor 来编写和管理电子书，因为它集成了 GitBook 命令、Markdown 编器和 Git 的功能，内容通过 Git 可与 gitbook.com / Gitlab / GitHub 同步，方便版本管理和团队协作。&lt;/p&gt;
-
-&lt;p&gt;可对于程序员或熟悉 Git 和 Markdown 的人，我更推荐使用 GitBook 命令行 + Typora + SourceTree 来编写和管理电子书。使用专业工具做专业的事，比 Gitbook Editor 高效很多。&lt;/p&gt;
-
-&lt;p&gt;GitBook 是开源的，地址：&lt;a href=&#34;https://github.com/GitbookIO/gitbook&#34; target=&#34;_blank&#34;&gt;https://github.com/GitbookIO/gitbook&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

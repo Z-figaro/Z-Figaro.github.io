@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Figaro ZP</title>
+    <title>Python on Figaro ZP</title>
     <link>https://z-figaro.github.io/tags/python/</link>
-    <description>Recent content in python on Figaro ZP</description>
+    <description>Recent content in Python on Figaro ZP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
@@ -19,6 +19,15 @@
       
       <guid>https://z-figaro.github.io/dailynote/python%E5%9F%BA%E7%A1%80/</guid>
       <description>&lt;p&gt;慢慢积累所有的基础知识，有深入的使用或者了解。会在后面单开章节写。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>APP国际化指南</title>
+      <link>https://z-figaro.github.io/ios/app%E5%9B%BD%E9%99%85%E5%8C%96%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Wed, 19 Dec 2018 15:39:51 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/ios/app%E5%9B%BD%E9%99%85%E5%8C%96%E6%8C%87%E5%8D%97/</guid>
+      <description>iOS国际化完全指南 看完这篇文章你可以解决国际化的绝大部分问题，并且本人重写了前人的脚本；可以实现代码，xib，storyboard的自动国</description>
     </item>
     
   </channel>

@@ -48,5 +48,14 @@
       <description>ARkit是什么？ ARKit是WWDC 17中公开的系统库，可以提供增强现实的体验。 ARKit的工作原理： 1.相机捕捉现实景象---由ARKi</description>
     </item>
     
+    <item>
+      <title>APP国际化指南</title>
+      <link>https://z-figaro.github.io/ios/app%E5%9B%BD%E9%99%85%E5%8C%96%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Wed, 19 Dec 2018 15:39:51 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/ios/app%E5%9B%BD%E9%99%85%E5%8C%96%E6%8C%87%E5%8D%97/</guid>
+      <description>iOS国际化完全指南 看完这篇文章你可以解决国际化的绝大部分问题，并且本人重写了前人的脚本；可以实现代码，xib，storyboard的自动国</description>
+    </item>
+    
   </channel>
 </rss>

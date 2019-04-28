@@ -7,40 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>All rights by figaro zp.</copyright>
-    <lastBuildDate>Sun, 14 Apr 2019 15:52:51 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 16:55:07 +0800</lastBuildDate>
     
 	<atom:link href="https://z-figaro.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>杂</title>
-      <link>https://z-figaro.github.io/tags/%E6%9D%82/</link>
-      <pubDate>Sun, 14 Apr 2019 15:52:51 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/%E6%9D%82/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://z-figaro.github.io/tags/git/</link>
-      <pubDate>Mon, 08 Apr 2019 14:27:07 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>submodule</title>
-      <link>https://z-figaro.github.io/tags/submodule/</link>
-      <pubDate>Mon, 08 Apr 2019 14:27:07 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/submodule/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>attribute</title>
+      <title>Attribute</title>
       <link>https://z-figaro.github.io/tags/attribute/</link>
       <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
       
@@ -49,16 +22,7 @@
     </item>
     
     <item>
-      <title>iOS</title>
-      <link>https://z-figaro.github.io/tags/ios/</link>
-      <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/ios/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blockchain</title>
+      <title>Blockchain</title>
       <link>https://z-figaro.github.io/tags/blockchain/</link>
       <pubDate>Thu, 21 Mar 2019 13:33:16 +0800</pubDate>
       
@@ -67,25 +31,7 @@
     </item>
     
     <item>
-      <title>golang</title>
-      <link>https://z-figaro.github.io/tags/golang/</link>
-      <pubDate>Thu, 21 Mar 2019 13:33:16 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>flutter</title>
-      <link>https://z-figaro.github.io/tags/flutter/</link>
-      <pubDate>Thu, 07 Mar 2019 10:51:14 +0800</pubDate>
-      
-      <guid>https://z-figaro.github.io/tags/flutter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fabric</title>
+      <title>Fabric</title>
       <link>https://z-figaro.github.io/tags/fabric/</link>
       <pubDate>Tue, 05 Mar 2019 09:57:49 +0800</pubDate>
       
@@ -94,11 +40,65 @@
     </item>
     
     <item>
-      <title>strconv</title>
-      <link>https://z-figaro.github.io/tags/strconv/</link>
-      <pubDate>Sat, 29 Dec 2018 14:25:38 +0800</pubDate>
+      <title>Flutter</title>
+      <link>https://z-figaro.github.io/tags/flutter/</link>
+      <pubDate>Thu, 07 Mar 2019 10:51:14 +0800</pubDate>
       
-      <guid>https://z-figaro.github.io/tags/strconv/</guid>
+      <guid>https://z-figaro.github.io/tags/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://z-figaro.github.io/tags/git/</link>
+      <pubDate>Mon, 08 Apr 2019 14:27:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitbook</title>
+      <link>https://z-figaro.github.io/tags/gitbook/</link>
+      <pubDate>Wed, 19 Dec 2018 15:36:44 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/gitbook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://z-figaro.github.io/tags/go/</link>
+      <pubDate>Wed, 19 Dec 2018 15:41:38 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://z-figaro.github.io/tags/golang/</link>
+      <pubDate>Thu, 21 Mar 2019 13:33:16 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://z-figaro.github.io/tags/hugo/</link>
+      <pubDate>Tue, 18 Dec 2018 17:14:28 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>https://z-figaro.github.io/tags/ios/</link>
+      <pubDate>Wed, 03 Apr 2019 16:55:07 +0800</pubDate>
+      
+      <guid>https://z-figaro.github.io/tags/ios/</guid>
       <description></description>
     </item>
     
